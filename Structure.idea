@@ -1,0 +1,54 @@
+Server Directory
++Tools
+	.Binaries
++Config
+	.MySQL
+	.Debug Settings
+	.Whatever
++Logs
+	+Debug
+	+Player
+	.Warning
+	.Error
+	.General
++packages
+	+MultiFun
+		+Server
+			+Commands
+				+Player
+				+Faction
+				+Vehicle
+				+Chat
+				(...)
+			+Entities
+				+Faction
+				+Player
+				+Vehicle
+				[
+				+Object
+				+Checkpoint
+				+Blip (whatever)
+				]
+			+Events
+				.PlayerEvents
+				.VehicleEvents
+				.MiscEvents
+			+Managers
+				.Manager (base class)
+				.CommandManager
+				.FactionManager
+				.PlayerManager
+				.VehicleManager
+			+Misc
+				.(whatever)
+			.Server.nut (Class)
+			.Main.nut
+		+Client
+			+GUI (?)
+.Binaries
+.Server Config
+.Linker (launches some tools)
+
+Tools Source
++Tool Name
+	.Tool source
