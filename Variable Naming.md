@@ -28,7 +28,8 @@ e.g. `Player.Phone.Call(someone)` instead of `Player.m_ciPhone.Call(someone)` (o
 
 ## Examples
 
-```g_SomeVar <- "I am famous!";
+```C
+g_SomeVar <- "I am famous!";
 
 class
 	Foo
