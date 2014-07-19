@@ -39,5 +39,5 @@ class
 	m_ciPhone 		=	PlayerPhone() // Would be correct too
 }
 
-ciSomeVar = Foo();
+local ciSomeVar = Foo();
 ```
