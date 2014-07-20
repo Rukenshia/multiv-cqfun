@@ -12,7 +12,7 @@ function Main (ciPackage, strArguments)
 		return; // We dont care.
 
 	// TODO: Debug Flags
-	print("We didnt start, did we?")
+	g_Server = Server(split(strArguments, " "));
 }
 Event.Add(Package, "start", Main);
 
@@ -21,6 +21,6 @@ function Shutdown (ciPackage)
 	if (ciPackage.GetName() != Package.Current().GetName())
 		return; // We dont care.
 
-	print("We didnt stop, did we?")
+	Server.Print("We didnt stop, did we?")
 }
 Event.Add(Package, "stop", Shutdown);

@@ -4,6 +4,38 @@
 		{
 			"filepath": "Server/Main.nut",
 			"type": "server"
+		},
+		{
+			"filepath": "Server/Global.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Enumerations.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Server.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/Date.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/LogFile.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/Utility.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/Vector3.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Misc/Hooks.nut",
+			"type": "server"
 		}
 	],
     "assets": [
