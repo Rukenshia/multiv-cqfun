@@ -36,6 +36,14 @@
 		{
 			"filepath": "Server/Misc/Hooks.nut",
 			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Player/Player.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Events/PlayerEvents.nut",
+			"type": "server"
 		}
 	],
     "assets": [

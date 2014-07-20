@@ -30,6 +30,10 @@ class
 		// Load Config
 		// Load Whatever
 
+		// Register Events
+		PlayerEvents.Register();
+		Success("Events registered.")
+
 		Success("Server Initialized.")
 		return true;
 	}
