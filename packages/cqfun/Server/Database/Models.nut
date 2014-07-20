@@ -11,6 +11,6 @@ class
 {
 	function Initialize ()
 	{
-		Account();
+		DBAccount();
 	}
 }

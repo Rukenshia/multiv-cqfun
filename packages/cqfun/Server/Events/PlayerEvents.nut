@@ -23,11 +23,11 @@ class
 	function Connect (ciPlayer)
 	{
 		Server.Debug("Player " + ciPlayer.GetName() + " joined. Initializing him.")
-		ciPlayer.Initialize(); // TODO: Use PlayerManager for this
+		PlayerManager.Initialize(ciPlayer);
 	}
 
 	function Disconnect (ciPlayer, iReason)
 	{
-
+		PlayerManager.Destroy(ciPlayer)
 	}
 }

@@ -34,9 +34,8 @@ class
 		// Load Config
 		// Load Whatever
 
-		// Register Events
-		PlayerEvents.Register();
-		Success("Events registered.")
+		// Start the Managers
+		PlayerManager();
 
 		Success("Server Initialized.")
 		return true;

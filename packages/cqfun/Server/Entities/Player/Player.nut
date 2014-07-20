@@ -10,10 +10,15 @@ class
 	Player extends Player
 {
 	TimeConnected 	=	null
+	Account 		=	null
+	Character 		=	null
 
 	// Essential Functions
 	function Initialize () 
 	{
+		// Load Database Account
+		
+
 		Server.Debug("Player" + GetName() + " initialized.");
 		TimeConnected = Date.Now();
 		return true;
@@ -21,6 +26,7 @@ class
 
 	function Destroy ()
 	{
+		// Save some db data
 		return true;
 	}
 

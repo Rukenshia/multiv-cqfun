@@ -9,7 +9,7 @@
 local __instance = null;
 
 class
-	Account extends CQORM
+	DBAccount extends CQORM
 {
 	m_strTable 	= "accounts";
 
@@ -39,7 +39,7 @@ class
 	}
 
 	function GetName ()
-		return "Account";
+		return "DBAccount";
 
 	// Getters and Setters
 	function GetInstance ()

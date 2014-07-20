@@ -18,6 +18,14 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Managers/BaseManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/PlayerManager.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Database/Query.nut",
 			"type": "server"
 		},
