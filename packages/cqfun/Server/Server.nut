@@ -37,7 +37,7 @@ class
 		// Start the Managers
 		PlayerManager();
 
-		Success("Server Initialized.")
+		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;
 	}
 

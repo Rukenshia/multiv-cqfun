@@ -13,6 +13,9 @@ class
 	{
 		Event.Add(OriginalPlayer, "connect", PlayerEvents.Connect);
 		Event.Add(OriginalPlayer, "disconnect", PlayerEvents.Disconnect);
+
+
+		Event.Add(OriginalPlayer, "inGame", PlayerEvents.InGame);
 	}
 
 	function UnRegister () 
@@ -29,5 +32,17 @@ class
 	function Disconnect (ciPlayer, iReason)
 	{
 		PlayerManager.Destroy(ciPlayer)
+	}
+
+	function InGame (ciPlayer)
+	{
+		if (ciPlayer.TryLogin())
+		{
+			ciPlayer.Spawn();
+		}
+		else
+		{
+			ciPlayer.Kick();
+		}
 	}
 }

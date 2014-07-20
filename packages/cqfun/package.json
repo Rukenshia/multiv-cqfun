@@ -2,6 +2,10 @@
 	"language": "squirrel",
 	"scripts": [
 		{
+			"filepath": "../../Config/Constants.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Main.nut",
 			"type": "server"
 		},
