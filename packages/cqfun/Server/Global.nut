@@ -7,4 +7,3 @@
  */
 
 // This file contains global variables
-g_Server <- null;

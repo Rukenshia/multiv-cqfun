@@ -30,7 +30,7 @@ class
 		// Load Config
 		// Load Whatever
 
-		Print("Server Initialized.", Log.Success)
+		Success("Server Initialized.")
 		return true;
 	}
 
@@ -40,17 +40,26 @@ class
 	}
 
 	// Getters and Setters
+	function GetInstance ()
+		return __instance;
 
 	// Is-Functions
 
 	// Other Functions
 	function HasFlag (iFlag)
 	{
+		// Remember to use GetInstance first
 		Print("TODO: Server.HasFlag")
 		return true; 
 	}
 
 	// Log Functions
+	function Debug (strMessage)
+		return Print(strMessage, Log.Debug)
+
+	function Error (strMessage)
+		return Print(strMessage, Log.Error)
+
 	function Print (strMessage, iType = Log.Info)
 	{
 		local strFile = "";
@@ -72,4 +81,7 @@ class
 
 		print(strMessage, iType)
 	}
+
+	function Success (strMessage)
+		return Print(strMessage, Log.Success)
 }

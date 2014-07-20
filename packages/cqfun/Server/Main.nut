@@ -12,7 +12,7 @@ function Main (ciPackage, strArguments)
 		return; // We dont care.
 
 	// TODO: Debug Flags
-	g_Server = Server(split(strArguments, " "));
+	Server(split(strArguments, " "));
 }
 Event.Add(Package, "start", Main);
 
