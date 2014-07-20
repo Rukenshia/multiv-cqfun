@@ -18,6 +18,26 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Database/Query.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/NestedQuery.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/CQORM.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/Account.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Utility/Date.nut",
 			"type": "server"
 		},

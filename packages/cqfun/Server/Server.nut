@@ -27,6 +27,10 @@ class
 	// Essential Functions
 	function Initialize () 
 	{
+		// Initialize Database Models
+		Models.Initialize();
+		Success("Database Models initialized.")
+		
 		// Load Config
 		// Load Whatever
 
