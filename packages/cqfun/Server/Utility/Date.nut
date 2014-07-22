@@ -1,9 +1,9 @@
 /*
- *		LIBERTY CITY ROLEPLAY
- *    @file: Date.nut
- *    @initial author: Jan Christophersen
+ *		MultIV CQFun
+ *	@file: Date.nut
+ *	@author: Jan Christophersen
  *     
- *    @initial date: 06.07.2014
+ *	@license: see "LICENSE" at root directory
  */
 
 class 

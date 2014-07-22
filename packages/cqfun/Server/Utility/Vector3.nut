@@ -1,9 +1,9 @@
 /*
- *		LIBERTY CITY ROLEPLAY
- *    @file: Vector3.nut
- *    @initial author: Jan Christophersen
+ *		MultIV CQFun
+ *	@file: Vector3.nut
+ *	@author: Jan Christophersen
  *     
- *    @initial date: 02.05.2014
+ *	@license: see "LICENSE" at root directory
  */
 
 class
