@@ -20,13 +20,12 @@ class
 	{
 		// Load Database Account
 		Account = DBAccount.Where("steam_id", "=", 1234).First(); // TODO: Replace that.
-
-		if (Account == null)
-			SendError("Could not get Account")
-
-		Server.Debug("Player" + GetName() + " initialized.");
 		TimeConnected = Date.Now();
 
+		if (Account == null)
+			SendError("TODO: Registration (Auto)")
+
+		Server.Debug("Player" + GetName() + " initialized.");
 		return true;
 	}
 
