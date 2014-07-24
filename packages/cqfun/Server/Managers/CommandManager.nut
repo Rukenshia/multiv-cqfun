@@ -70,12 +70,16 @@ class
 		// Remove first parameter because its always 'this', also remove one because ciPlayer is mandatory
 		local iMinArgs = tInfo.parameters.len() - 1 - 1 - tInfo.defparams.len();
 
-		print("MinArgs: " + iMinArgs + ", tinfoparamlen: " + tInfo.parameters.len() + ", defparamslen: " + tInfo.defparams.len());
-
-		if (tInfo.parameters.len() == 2)
+		if (tInfo.parameters.len() > 0)
 		{
-			if (tInfo.parameters[1] == "notExtendedYet")
-				throw("Command " + ciCommand.GetName() + ": Run method not defined");
+			if (tInfo.parameters[tInfo.parameters.len() - 1] == "...")
+				iMinArgs = 0;
+
+			if (tInfo.parameters.len() == 2)
+			{
+				if (tInfo.parameters[1] == "notExtendedYet")
+					throw("Command " + ciCommand.GetName() + ": Run method not defined");
+			}
 		}
 
 		foreach (strTrigger in ciCommand.GetTrigger())
@@ -120,7 +124,7 @@ class
 			return ciCommand.Run(ciPlayer);
 
 		// Resize if there are too many parameters
-		if (args.len() > tInfo.parameters.len() - 2)
+		if (args.len() > tInfo.parameters.len() - 2 && (tInfo.parameters.len() > 0 && tInfo.parameters[tInfo.parameters.len() - 1] != "..."))
 			args.resize(tInfo.parameters.len() - 2);
 
 		if (ciCommand instanceof CQTextCommand)

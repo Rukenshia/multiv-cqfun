@@ -53,7 +53,10 @@ class
 	}
 
 	function SendError (strMessage)
-		SendMessage(strMessage, Color.Error)
+		SendMessage(strMessage, Color.Error);
+
+	function SendInfo (strMessage)
+		SendMessage(strMessage, Color.Info);
 
 	function SendMessage (strMessage, iColor = 0xFFFFFF)
 		base.SendMessage(format("#%x%s", iColor, strMessage));
