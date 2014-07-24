@@ -130,10 +130,9 @@ class
 		if (ciCommand instanceof CQTextCommand)
 			return ciCommand.Run(ciPlayer, Utility.Implode(args, " "));
 
-		local strHandler = "return function (ciCommand, ciPlayer) {\n"
-		strHandler += "return ciCommand.Run(ciPlayer, " + Utility.VArgvToString(args) + ");\n"
-		strHandler += "}"
-		return compilestring(strHandler)()(ciCommand, ciPlayer);
+		args.insert(0, ciPlayer);
+		args.insert(0, getroottable()); // needed for acall
+		return ciCommand.Run.acall(args);
 	}
 
 	function UnRegister (ciCommand)
