@@ -1,7 +1,7 @@
 # Commands
-[CQCommand](packages/cqfun/Server/Commands/CQCommand.nut) is a system that allows you to create commands with predefined behaviour.
+[CQCommand](https://github.com/Rukenshia/multiv-cqfun/blob/development/packages/cqfun/Server/Commands/CQCommand.nut) is a system that allows you to create commands with predefined behaviour.
 It allows you to use multiple triggers for a command and generates an usage string (you need to define the parameters in the usage string however).
-The CommandManager also detects the amount of parameters a command has. You just have to input the command snippet (see multiv-cqfun-tools) and you are ready to go.
+The [CommandManager](https://github.com/Rukenshia/multiv-cqfun/blob/development/packages/cqfun/Server/Managers/CommandManager.nut) also detects the amount of parameters a command has. You just have to input the command snippet (see multiv-cqfun-tools) and you are ready to go.
 
 ## Example Command
 ```Squirrel
@@ -13,7 +13,7 @@ class
 		// Two triggers, /exampleCommand and /ex
 		base.constructor(["exampleCommand", "ex"]);
 		// Each argument will produce the following usage message
-		// USAGE: /\[exampleCommand,ex\] \[parameter1\] \[parameter2\] \[parameter_n\]
+		// USAGE: /[exampleCommand,ex] [parameter1] [parameter2] [parameter_n]
 		SetUsage("someString", "someInteger");
 		CommandManager.Register(this);
 	}
