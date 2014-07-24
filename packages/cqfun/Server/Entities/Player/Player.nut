@@ -13,6 +13,8 @@ class
 	Account 		=	null
 	Character 		=	null
 
+	m_bLoggedIn		=	false
+
 	// Essential Functions
 	function Initialize () 
 	{
@@ -37,6 +39,8 @@ class
 	// Getters and Setters
 
 	// Is-Functions
+	function IsLoggedIn ()
+		return m_bLoggedIn;
 
 	// Other Functions
 	function Debug (strMessage)
@@ -45,20 +49,21 @@ class
 	function Login ()
 	{
 		SendSuccess("Successfully logged in. Welcome to " + MODE_NAME + " " + MODE_VERSION + "!");
-
+		m_bLoggedIn = true;
 		return true;
 	}
 
-	function SendError (strMessage, bServerOutput = true)
-	{
+	function SendError (strMessage)
 		SendMessage(strMessage, Color.Error)
-
-		if (bServerOutput)
-			Server.Error(GetName() + ": " + strMessage)
-	}
 
 	function SendMessage (strMessage, iColor = 0xFFFFFF)
 		base.SendMessage(format("#%x%s", iColor, strMessage));
+
+	function SendProblem (strMessage)
+	{
+		SendError(strMessage);
+		Server.Error(GetName() + ": " + strMessage)
+	}
 
 	function SendSuccess (strMessage)
 		SendMessage(strMessage, Color.Success);

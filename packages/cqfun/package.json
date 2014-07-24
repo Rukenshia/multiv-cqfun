@@ -30,6 +30,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Managers/CommandManager.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Database/Query.nut",
 			"type": "server"
 		},
@@ -58,6 +62,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Utility/JSON.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Utility/Utility.nut",
 			"type": "server"
 		},
@@ -75,6 +83,14 @@
 		},
 		{
 			"filepath": "Server/Events/PlayerEvents.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Commands/CQCommand.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Commands/Commands.nut",
 			"type": "server"
 		}
 	],

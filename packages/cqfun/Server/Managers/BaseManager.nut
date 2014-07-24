@@ -35,7 +35,7 @@ class
 
 	// Getters and Setters
 	function GetItems ()
-		return m_tItems;
+		return GetInstance().m_tItems;
 
 	// Is-Functions
 

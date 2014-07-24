@@ -6,10 +6,25 @@
  *	@license: see "LICENSE" at root directory
  */
 
+function Testy (x, y=1, z=1)
+{
+
+}
 function Main (ciPackage, strArguments)
 {
 	if (ciPackage.GetName() != Package.Current().GetName())
 		return; // We dont care.
+
+	/*foreach (i, val in Testy.getinfos())
+	{
+		if (typeof val == "array")
+		{
+			foreach (i2, val2 in val)
+				print("[" + i + "] " + i2 + ": " + val2)
+		}
+		else
+			print(i + ": " + val);
+	}*/
 
 	// TODO: Debug Flags
 	Server(split(strArguments, " "));

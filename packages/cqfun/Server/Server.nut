@@ -36,6 +36,7 @@ class
 
 		// Start the Managers
 		PlayerManager();
+		CommandManager();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;
@@ -91,4 +92,7 @@ class
 
 	function Success (strMessage)
 		return Print(strMessage, Log.Success)
+
+	function Warning (strMessage)
+		return Print(strMessage, Log.Warning);
 }
