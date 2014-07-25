@@ -27,6 +27,9 @@ class
 	function GetValue ()
 		return m_fValue;
 
+	function GetValueAsModifier ()
+		return m_fValue / 100.0;
+
 	function SetValue (fValue)
 		m_fValue = fValue;
 }

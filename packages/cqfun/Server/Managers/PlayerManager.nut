@@ -46,6 +46,19 @@ class
 	function GetPlayers ()
 		return Player.All();
 
+	function GetByDatabaseId (iId)
+	{
+		foreach (ciPlayer in GetPlayers())
+		{
+			if (ciPlayer.Character != null)
+			{
+				if (ciPlayer.Character.id == iId)
+					return ciPlayer;
+			}
+		}
+		return null;
+	}
+
 	// Is-Functions
 
 	// Other Functions

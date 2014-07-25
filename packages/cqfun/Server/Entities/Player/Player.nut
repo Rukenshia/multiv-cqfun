@@ -27,6 +27,11 @@ class
 		if (Account == null)
 			SendError("TODO: Registration (Auto)")
 
+		Character = DBCharacter.Where("account", "=", Account.id).Where("name", "=", GetName()).First();
+
+		if (Character == null)
+			SendError("TODO: Char Registration Thing");
+
 		Server.Debug("Player" + GetName() + " initialized.");
 		return true;
 	}
@@ -44,6 +49,24 @@ class
 		return m_bLoggedIn;
 
 	// Other Functions
+	function ApplyStatModifiers (strStat)
+	{
+		local fValue = StatModifiers.GetTotalValue(PlayerStat.MaxHealth);
+
+		if (fValue == 0.0)
+			return;
+
+		switch (strStat)
+		{
+			case PlayerStat.MaxHealth:
+				// Erm, dunno how to do this now
+				break;
+			case PlayerStat.Mobility:
+				// Need to wait for some multiv functions
+				break;
+		}
+	}
+
 	function Debug (strMessage)
 		SendMessage(strMessage, Color.Debug);
 

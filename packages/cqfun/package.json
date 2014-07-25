@@ -30,6 +30,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Managers/VehicleManager.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Database/Query.nut",
 			"type": "server"
 		},
@@ -42,7 +46,11 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Database/Models/Account.nut",
+			"filepath": "Server/Database/Models/DBAccount.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/DBVehicle.nut",
 			"type": "server"
 		},
 		{
@@ -86,7 +94,15 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Entities/Vehicle/Vehicle.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Events/PlayerEvents.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Events/VehicleEvents.nut",
 			"type": "server"
 		},
 		{

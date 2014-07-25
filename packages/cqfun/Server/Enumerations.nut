@@ -19,12 +19,6 @@ enum Color
 	Success = 0x27AE60
 };
 
-enum Stat
-{
-	Health = "Health",
-	Mobility = "Mobility"
-};
-
 enum Log 
 {
 	Info,
@@ -35,7 +29,19 @@ enum Log
 	NoPrefix
 };
 
+enum PlayerStat
+{
+	MaxHealth = "Maximum Health",
+	Mobility = "Movement Speed"
+};
+
 enum ServerFlags
 {
 	EnableDebugMessages
+};
+
+enum VehicleStat
+{
+	MaximumHealth = "Maximum Vehicle Health",
+	Mobility = "Vehicle Movement Speed",
 };

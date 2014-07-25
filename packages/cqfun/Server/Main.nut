@@ -5,6 +5,12 @@
  *     
  *	@license: see "LICENSE" at root directory
  */
+
+class 
+	Foo
+{
+
+}
  
 function Main (ciPackage, strArguments)
 {

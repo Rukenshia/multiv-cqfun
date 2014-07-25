@@ -37,6 +37,7 @@ class
 		// Start the Managers
 		PlayerManager();
 		CommandManager();
+		VehicleManager();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;

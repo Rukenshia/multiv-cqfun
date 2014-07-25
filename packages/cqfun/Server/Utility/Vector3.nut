@@ -212,6 +212,22 @@ class
 		return cv1.x * cv2.x + cv1.y * cv2.y + cv1.z * cv2.z;
 	}
 
+	function Floatify (vec = null)
+	{
+		if (vec == null)
+		{
+			x = x.tofloat();
+			y = y.tofloat();
+			z = z.tofloat();
+		}
+		else
+		{
+			vec.x = vec.x.tofloat();
+			vec.y = vec.y.tofloat();
+			vec.z = vec.z.tofloat();
+			return vec;
+		}
+	}
 
 }
 

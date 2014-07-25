@@ -9,9 +9,9 @@
 class
 	CStatModifiers extends Collection
 {
-	constructor ()
+	constructor (tData = null)
 	{
-		return base.constructor();
+		return base.constructor(tData);
 	}
 
 	// Essential Functions
@@ -44,6 +44,14 @@ class
 		}
 		else
 			return base.GetData();
+	}
+
+	function GetTotalValue (strStat)
+	{
+		local aStats = GetModifiers(strStat);
+		local fValue = 0.0;
+		foreach (ciStatModifier in aStats)
+			fValue += ciStatModifier.GetValue();
 	}
 
 	// Is-Functions
