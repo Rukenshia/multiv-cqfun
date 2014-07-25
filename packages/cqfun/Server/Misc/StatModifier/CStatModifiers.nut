@@ -14,6 +14,9 @@ class
 		return base.constructor(tData);
 	}
 
+	function _typeof ()
+		return "CStatModifiers";
+		
 	// Essential Functions
 	function Initialize () 
 	{

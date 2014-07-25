@@ -18,6 +18,9 @@ class
 		m_fValue = fValue;
 	}
 
+	function _typeof ()
+		return "StatModifier";
+
 	function GetStat ()
 		return m_strStat;
 

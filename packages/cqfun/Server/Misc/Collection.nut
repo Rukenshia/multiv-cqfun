@@ -19,6 +19,9 @@ class
 			m_tData = {};
 	}
 
+	function _typeof ()
+		return "Collection";
+
 	function Initialize ()
 	{
 		return true;
