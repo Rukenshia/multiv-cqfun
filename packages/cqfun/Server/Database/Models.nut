@@ -12,5 +12,8 @@ class
 	function Initialize ()
 	{
 		DBAccount();
+		DBCharacter();
+		DBFaction();
+		DBVehicle();
 	}
 }

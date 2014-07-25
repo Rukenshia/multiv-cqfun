@@ -158,9 +158,9 @@ class
 						continue;
 
 					if (typeof idx == "integer")
-						idx = idx + "";
-
-					o_str += ((this.Encode (idx, _te) == null || this.Encode (vidx, _te) == null) ? "" : "" + this.Encode (idx, _te, i) + ": " + this.Encode (vidx, _te, i) + ((idx == var.len()) ? "" : ",\n"));
+						o_str += (this.Encode (vidx, _te) == null) ? "" : "\"" + idx + "\": " + this.Encode (vidx, _te, i) + ((idx == var.len()) ? "" : ",\n");
+					else
+						o_str += (this.Encode (vidx, _te) == null) ? "" : idx + "= " + this.Encode (vidx, _te, i) + ((idx == var.len()) ? "" : ",\n");
 				}
 				o_str += "\n}";
 				break;

@@ -5,8 +5,6 @@
  *     
  *	@license: see "LICENSE" at root directory
  */
-OriginalVehicle <- Vehicle;
-
 class
 	Vehicle extends Vehicle
 {
@@ -20,6 +18,7 @@ class
 	function Initialize () 
 	{
 		Server.Debug("Vehicle" + GetName() + " initialized.");
+		StatModifiers = CStatModifiers();
 		return true;
 	}
 

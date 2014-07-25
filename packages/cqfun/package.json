@@ -50,7 +50,15 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Database/Models/DBCharacter.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Database/Models/DBVehicle.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/DBFaction.nut",
 			"type": "server"
 		},
 		{
@@ -95,6 +103,10 @@
 		},
 		{
 			"filepath": "Server/Entities/Vehicle/Vehicle.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/Faction.nut",
 			"type": "server"
 		},
 		{

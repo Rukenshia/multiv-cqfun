@@ -1,6 +1,6 @@
 /*
  *		MultIV CQFun
- *	@file: Vehicle.nut
+ *	@file: DBFaction.nut
  *	@author: Jan Christophersen
  *     
  *	@license: see "LICENSE" at root directory
@@ -9,16 +9,14 @@
 local __instance = null;
 
 class
-	DBVehicle extends CQORM
+	DBFaction extends CQORM
 {
-	m_strTable 		=	"vehicles";
+	m_strTable 		=	"factions";
 
 	// Fields
-	id 				=	0
-	owner			=	-1
-	faction			=	-1
-	model			=	710
-	spawn_data		=	EmptyTable
+	id				=	0
+	members			=	EmptyTable
+	
 
 	constructor ()
 	{
@@ -42,7 +40,7 @@ class
 	}
 
 	function GetName ()
-		return "DBVehicle";
+		return "DBFaction";
 
 	// Getters and Setters
 	function GetInstance ()

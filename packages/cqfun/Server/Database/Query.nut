@@ -15,15 +15,21 @@ function SQLite::Escape (str)
 	for (local i = 0; i < str.len(); i++)
 	{
 
-		if (str[i] == '\r' || str[i] == '\n' || str[i] == '\0' || str[i] == '\'' || str[i] == '"' || str[i].tochar() == 0x1a || str[i].tochar() == 0x00) // "
+		if (str[i] == '\r' || str[i] == '\0' || str[i] == '\'' || str[i] == '"' || str[i].tochar() == 0x1a || str[i].tochar() == 0x00) // "
 		{
 			strRetn += "\\";
 		}
 		strRetn += str[i].tochar();
 	}
-
-	print (strRetn);
 	return strRetn;
+}
+
+function SQLite::EscapeTable (t)
+{
+	foreach (i, val in t)
+		t[i] = Escape(val)
+
+	return t;
 }
 
 class

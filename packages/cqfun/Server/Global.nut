@@ -11,3 +11,4 @@
 // Needed because Events would not work otherwise
 OriginalPlayer		<- 	Player;
 OriginalVehicle 	<- 	Vehicle;
+EmptyTable			<-	{};

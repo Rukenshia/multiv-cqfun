@@ -32,17 +32,36 @@ class
 		if (Character == null)
 			SendError("TODO: Char Registration Thing");
 
-		Server.Debug("Player" + GetName() + " initialized.");
+		Server.Debug("Player " + GetName() + " initialized.");
 		return true;
 	}
 
 	function Destroy ()
 	{
-		// Save some db data
+		if (Account == null)
+			Server.Warning("TODO: Dump Account");
+		else
+		{
+			Account.Save();
+		}
+
+		if (Character == null)
+			Server.Warning("TODO: Dump Character");
+		else
+		{
+			Character.spawn_data = JSON.Encode({"Position": GetPosition(), "Heading": GetCurrentHeading() });
+			Server.Debug("Spawn Data: " + Character.spawn_data);
+			Character.Save();
+		}
 		return true;
 	}
 
 	// Getters and Setters
+	function GetPosition ()
+	{
+		local tPos = base.GetPosition();
+		return Vector3(tPos.x, tPos.y, tPos.z);
+	}
 
 	// Is-Functions
 	function IsLoggedIn ()
@@ -97,6 +116,18 @@ class
 
 	function Spawn ()
 	{
+		if (Character != null)
+		{
+			local tSpawnData = JSON.Decode(Character.spawn_data);
+			if (typeof tSpawnData == "table")
+			{
+				tSpawnData.Position.Floatify();
+				Debug("Spawning at " + tSpawnData.Position.tostring());
+				return base.Spawn(tSpawnData.Position.x, tSpawnData.Position.y, tSpawnData.Position.z, tSpawnData.Heading.tofloat());
+			}
+			else
+				Server.Error("Invalid SpawnData for Player " + GetName() " (char " + Character.id + "): " + tSpawnData);
+		}
 		return base.Spawn(NullVector.x.tofloat(), NullVector.y.tofloat(), NullVector.z.tofloat(), 0.0);
 	}
 

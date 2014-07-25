@@ -177,7 +177,7 @@ class
 		local tResult = GetInstance().m_ciQuery.Execute();
 		
 		if (tResult.len() == 0)
-			return false;
+			return null;
 
 		local ciModel = this();
 		foreach (i, field in GetInstance().m_aColumns)
@@ -208,13 +208,29 @@ class
 		local iChangedValues = 0;
 		foreach (i, val in GetInstance().m_aColumns)
 		{
-			if (i != 0)
+			local compVal = ciModel[val];
+			if (typeof compVal == "table")
+				compVal = JSON.Encode(compVal);
+
+			if (ciModel.m_tOldData.rawin(val) && ciModel.m_tOldData[val] == compVal)
+			{
+				Server.Debug(GetName() + "::Update skipped " + val);
+				continue;
+			}
+
+			if (iChangedValues != 0)
 				strQuery += ", ";
 
-			if (ciModel.m_tOldData.rawin(val) && ciModel.m_tOldData[val] == ciModel[val])
-				continue;
-
-			strQuery += val + " = '" + SQLite.Escape(ciModel[val]) + "'";
+			if (typeof ciModel[val] == "table")
+			{
+				print("TABLE")
+				strQuery += val + " = '" + JSON.Encode(SQLite.EscapeTable(ciModel[val])) + "'";
+			}
+			else
+			{
+				print("NO TABLE")
+				strQuery += val + " = '" + SQLite.Escape(ciModel[val]) + "'";
+			}
 			iChangedValues++
 		}
 
@@ -227,6 +243,7 @@ class
 		strQuery += " WHERE id = '" + this.m_tOldData.id + "'";
 
 		UpdateOldData();
+		print(strQuery);
 
 		Server.Debug(SQLite.Prepare(strQuery).Execute().len() + " row(s) affected when updating " + GetName());
 	}
@@ -239,9 +256,19 @@ class
 				m_tOldData = {};
 
 			if (!m_tOldData.rawin(val))
-				m_tOldData [val] <- this[val];
+			{
+				if (typeof this[val] == "table")
+					m_tOldData [val] <-	JSON.Encode(this[val]);
+				else
+					m_tOldData [val] <-	this[val];
+			}
 			else
-				m_tOldData [val] = this[val];
+			{
+				if (typeof this[val] == "table")
+					m_tOldData [val] <-	JSON.Encode(this[val]);
+				else
+					m_tOldData [val] = this[val];
+			}
 		}
 	}
 

@@ -17,7 +17,7 @@ class
 	id 				=	0
 	account 		=	0
 	name 			=	""
-	spawn_data 		=	""
+	spawn_data 		=	EmptyTable
 
 	constructor ()
 	{
