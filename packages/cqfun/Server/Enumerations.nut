@@ -19,6 +19,12 @@ enum Color
 	Success = 0x27AE60
 };
 
+enum Stat
+{
+	Health = "Health",
+	Mobility = "Mobility"
+};
+
 enum Log 
 {
 	Info,

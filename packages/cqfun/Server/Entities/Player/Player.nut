@@ -12,6 +12,7 @@ class
 	TimeConnected 	=	null
 	Account 		=	null
 	Character 		=	null
+	StatModifiers	=	null
 
 	m_bLoggedIn		=	false
 
@@ -21,6 +22,7 @@ class
 		// Load Database Account
 		Account = DBAccount.Where("steam_id", "=", 1234).First(); // TODO: Replace that.
 		TimeConnected = Date.Now();
+		StatModifiers = CStatModifiers();
 
 		if (Account == null)
 			SendError("TODO: Registration (Auto)")

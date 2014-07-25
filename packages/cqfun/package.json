@@ -6,10 +6,6 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Main.nut",
-			"type": "server"
-		},
-		{
 			"filepath": "Server/Global.nut",
 			"type": "server"
 		},
@@ -18,7 +14,7 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Server.nut",
+			"filepath": "Server/Misc/Collection.nut",
 			"type": "server"
 		},
 		{
@@ -78,6 +74,14 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Misc/StatModifier/StatModifier.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Misc/StatModifier/CStatModifiers.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Entities/Player/Player.nut",
 			"type": "server"
 		},
@@ -91,6 +95,14 @@
 		},
 		{
 			"filepath": "Server/Commands/Commands.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Server.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Main.nut",
 			"type": "server"
 		}
 	],
