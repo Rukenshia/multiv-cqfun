@@ -19,6 +19,7 @@ class
 			throw("Recreation of CommandManager");
 
 		__instance = this;
+		base.constructor(Command);
 		Initialize();
 	}
 

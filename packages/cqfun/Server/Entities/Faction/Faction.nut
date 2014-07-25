@@ -12,6 +12,7 @@ class
 	DBModel			=	null
 	Members 		=	null
 	StatModifiers	=	null
+	Vehicles		=	null
 
 	m_strName		=	""
 
@@ -19,6 +20,7 @@ class
 	{
 		m_strName = strName;
 		StatModifiers = CStatModifiers();
+		Vehicles = Collection();
 
 		Initialize();
 	}

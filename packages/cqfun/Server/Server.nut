@@ -38,6 +38,7 @@ class
 		PlayerManager();
 		CommandManager();
 		VehicleManager();
+		FactionManager();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;
