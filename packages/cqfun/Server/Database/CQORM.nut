@@ -213,24 +213,15 @@ class
 				compVal = JSON.Encode(compVal);
 
 			if (ciModel.m_tOldData.rawin(val) && ciModel.m_tOldData[val] == compVal)
-			{
-				Server.Debug(GetName() + "::Update skipped " + val);
 				continue;
-			}
 
 			if (iChangedValues != 0)
 				strQuery += ", ";
 
 			if (typeof ciModel[val] == "table")
-			{
-				print("TABLE")
 				strQuery += val + " = '" + JSON.Encode(SQLite.EscapeTable(ciModel[val])) + "'";
-			}
 			else
-			{
-				print("NO TABLE")
 				strQuery += val + " = '" + SQLite.Escape(ciModel[val]) + "'";
-			}
 			iChangedValues++
 		}
 
@@ -243,7 +234,6 @@ class
 		strQuery += " WHERE id = '" + this.m_tOldData.id + "'";
 
 		UpdateOldData();
-		print(strQuery);
 
 		Server.Debug(SQLite.Prepare(strQuery).Execute().len() + " row(s) affected when updating " + GetName());
 	}

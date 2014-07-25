@@ -49,7 +49,7 @@ class
 			Server.Warning("TODO: Dump Character");
 		else
 		{
-			Character.spawn_data = JSON.Encode({"Position": GetPosition(), "Heading": GetCurrentHeading() });
+			Character.spawn_data = {"Position": GetPosition(), "Heading": GetCurrentHeading() };
 			Server.Debug("Spawn Data: " + Character.spawn_data);
 			Character.Save();
 		}
@@ -118,7 +118,7 @@ class
 	{
 		if (Character != null)
 		{
-			local tSpawnData = JSON.Decode(Character.spawn_data);
+			local tSpawnData = Character.spawn_data;
 			if (typeof tSpawnData == "table")
 			{
 				tSpawnData.Position.Floatify();
@@ -126,7 +126,7 @@ class
 				return base.Spawn(tSpawnData.Position.x, tSpawnData.Position.y, tSpawnData.Position.z, tSpawnData.Heading.tofloat());
 			}
 			else
-				Server.Error("Invalid SpawnData for Player " + GetName() " (char " + Character.id + "): " + tSpawnData);
+				Server.Error("Invalid SpawnData for Player " + GetName() + " (char " + Character.id + "): " + tSpawnData);
 		}
 		return base.Spawn(NullVector.x.tofloat(), NullVector.y.tofloat(), NullVector.z.tofloat(), 0.0);
 	}

@@ -65,7 +65,7 @@ class
 
 	function CreateFromDBModel (ciModel)
 	{
-		local tSpawnData = JSON.Decode(ciModel.spawn_data);
+		local tSpawnData = ciModel.spawn_data;
 		tSpawnData.Position.Floatify();
 		tSpawnData.Rotation.Floatify();
 

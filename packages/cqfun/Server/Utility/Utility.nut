@@ -264,6 +264,8 @@ function Utility::ToType (v, type)
 
 				return temp;
 			}
+			if (typeof v == "string")
+				return JSON.Decode(v);
 			return v;
 		default:
 			return v;
