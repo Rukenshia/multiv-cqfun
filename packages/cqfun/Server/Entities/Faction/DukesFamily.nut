@@ -1,6 +1,6 @@
 /*
  *		MultIV CQFun
- *	@file: DBFaction.nut
+ *	@file: DukesFamily.nut
  *	@author: Jan Christophersen
  *     
  *	@license: see "LICENSE" at root directory
@@ -9,47 +9,34 @@
 local __instance = null;
 
 class
-	DBFaction extends CQORM
+	DukesFamily	extends Faction
 {
-	m_strTable 		=	"factions";
-
-	// Fields
-	id				=	0
-	members			=	EmptyTable
-	name 			=	""
-	
-
 	constructor ()
 	{
-
 		if (__instance != null)
-			return;
+			throw("Recreation of DukesFamily");
 
-		base.constructor (m_strTable);
 		__instance = this;
+		base.constructor("Dukes Family");
+		Initialize();
 	}
 
 	// Essential Functions
 	function Initialize () 
 	{
+		base.Initialize();
 		return true;
 	}
 
 	function Destroy ()
 	{
+		base.Destroy();
 		return true;
 	}
 
-	function GetName ()
-		return "DBFaction";
-
 	// Getters and Setters
-	function GetInstance ()
-		return __instance;
 
 	// Is-Functions
 
 	// Other Functions
-	function Save ()
-		base.Update(this);
 }

@@ -11,7 +11,7 @@
 local __instance = null;
 
 class
-	VehicleManager
+	VehicleManager extends BaseManager
 {
 	constructor ()
 	{
@@ -19,6 +19,7 @@ class
 			throw("Recreation of VehicleManager");
 
 		__instance = this;
+		base.constructor(Vehicle);
 		return Initialize();
 	}
 
@@ -26,15 +27,23 @@ class
 	function Initialize () 
 	{
 		// Register Events
+		base.Initialize();
+
 		VehicleEvents.Register();
 		Server.Print("Vehicle Events registered.")
 		return true;
 	}
 
-	function Destroy (ciVehicle = null)
+	function GetInstance ()
+		return __instance;
+
+	function Destroy ()
 	{
-		if (ciVehicle != null)
-			return DestroyPlayer(ciVehicle);
+		foreach (ciVehicle in GetInstance().GetItems())
+		{
+			Remove(ciVehicle);
+			ciVehicle.Destroy();
+		}
 
 		return true;
 	}

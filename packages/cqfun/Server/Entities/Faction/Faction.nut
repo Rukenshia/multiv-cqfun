@@ -22,24 +22,46 @@ class
 		StatModifiers = CStatModifiers();
 		Vehicles = Collection();
 
+		Load();
 		Initialize();
 	}
 
 	// Essential Functions
 	function Initialize () 
 	{
-		// Load from DB
 		return true;
 	}
 
 	function Destroy ()
 	{
+		Server.Warning("TODO: Faction.Destroy");
 		return true;
 	}
 
 	// Getters and Setters
+	function GetName ()
+		return m_strName;
 
 	// Is-Functions
 
 	// Other Functions
+	function Load ()
+	{
+		// Load from DB
+		DBModel = DBFaction.Where("name", "=", GetName()).First();
+		if (DBModel == null)
+			throw("Could not load Faction " + GetName());
+
+		// Spawn Vehicles
+		local tVehicles = DBVehicle.Where("faction", "=", DBModel.id).Get();
+		foreach (ciDBVehicle in tVehicles)
+		{
+			local ciVehicle = Vehicle.CreateFromDBModel(ciDBVehicle);
+			ciVehicle.Owner = this;
+			Vehicles.Add(ciVehicle);
+			Server.Debug("Spawned Vehicle " + ciVehicle.DBModel.id);
+		}
+
+		Server.Print(GetName() + " loaded.");
+	}
 }

@@ -1,6 +1,6 @@
 /*
  *		MultIV CQFun
- *	@file: FactionManager.nut
+ *	@file: BrokerAssassins.nut
  *	@author: Jan Christophersen
  *     
  *	@license: see "LICENSE" at root directory
@@ -9,15 +9,15 @@
 local __instance = null;
 
 class
-	FactionManager extends BaseManager
+	BrokerAssassins	extends Faction
 {
 	constructor ()
 	{
 		if (__instance != null)
-			throw("Recreation of FactionManager");
+			throw("Recreation of BrokerAssassins");
 
 		__instance = this;
-		base.constructor(Faction);
+		base.constructor("Broker Assassins");
 		Initialize();
 	}
 
@@ -25,7 +25,6 @@ class
 	function Initialize () 
 	{
 		base.Initialize();
-		LoadFactions();
 		return true;
 	}
 
@@ -36,13 +35,8 @@ class
 	}
 
 	// Getters and Setters
-	function GetFactions ()
-		return GetData();
 
 	// Is-Functions
 
 	// Other Functions
-	function LoadFactions ()
-	{
-	}
 }

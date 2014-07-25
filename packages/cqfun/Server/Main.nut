@@ -22,5 +22,6 @@ function Shutdown (ciPackage)
 		return; // We dont care.
 
 	Server.Print("We didnt stop, did we?")
+	Server.Destroy();
 }
 Event.Add(Package, "stop", Shutdown);

@@ -17,8 +17,10 @@ class
 	// Essential Functions
 	function Initialize () 
 	{
-		Server.Debug("Vehicle" + GetName() + " initialized.");
+		Server.Debug("Vehicle " + m_iDatabaseId + " initialized.");
 		StatModifiers = CStatModifiers();
+
+		VehicleManager.Add(this);
 		return true;
 	}
 
@@ -55,11 +57,11 @@ class
 		v3Position.Floatify();
 		v3Rotation.Floatify();
 		local ciVehicle = base.Create(iModel, v3Position.x, v3Position.y, v3Position.z, v3Rotation.x, v3Rotation.y, v3Rotation.z, aColors[0], aColors[1], aColors[2], aColors[3]);
-		ciVehicle.Initialize();
 		ciVehicle.SpawnData = {};
 		ciVehicle.SpawnData.Position <- v3Position;
 		ciVehicle.SpawnData.Rotation <- v3Rotation;
 		ciVehicle.SpawnData.Colors <- aColors;
+		ciVehicle.Initialize();
 		return ciVehicle;
 	}
 
@@ -69,10 +71,11 @@ class
 		tSpawnData.Position.Floatify();
 		tSpawnData.Rotation.Floatify();
 
-		// TODO COLORS
-		local ciVehicle = Vehicle.Create(ciModel.model, tSpawnData.Position.x, tSpawnData.Position.y, tSpawnData.Position.z, tSpawnData.Rotation.x, tSpawnData.Rotation.y, tSpawnData.Rotation.z, tSpawnData.Color[0], tSpawnData.Color[1], tSpawnData.Color[2], tSpawnData.Color[3]);
+		local ciVehicle = base.Create(ciModel.model, tSpawnData.Position.x, tSpawnData.Position.y, tSpawnData.Position.z, tSpawnData.Rotation.x, tSpawnData.Rotation.y, tSpawnData.Rotation.z, tSpawnData.Color[0], tSpawnData.Color[1], tSpawnData.Color[2], tSpawnData.Color[3]);
 		ciVehicle.SetDatabaseId (ciModel.id);
+		ciVehicle.SpawnData = tSpawnData;
 		ciVehicle.DBModel = ciModel;
+		ciVehicle.Initialize();
 
 		return ciVehicle;
 	}

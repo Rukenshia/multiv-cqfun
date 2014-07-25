@@ -34,10 +34,6 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Managers/FactionManager.nut",
-			"type": "server"
-		},
-		{
 			"filepath": "Server/Database/Query.nut",
 			"type": "server"
 		},
@@ -111,6 +107,18 @@
 		},
 		{
 			"filepath": "Server/Entities/Faction/Faction.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/BohanHounds.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/BrokerAssassins.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/DukesFamily.nut",
 			"type": "server"
 		},
 		{

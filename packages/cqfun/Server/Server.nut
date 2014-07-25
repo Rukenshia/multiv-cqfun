@@ -38,7 +38,11 @@ class
 		PlayerManager();
 		CommandManager();
 		VehicleManager();
-		FactionManager();
+		
+		// Load Factions
+		BohanHounds();
+		BrokerAssassins();
+		DukesFamily();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;
@@ -46,6 +50,13 @@ class
 
 	function Destroy ()
 	{
+		PlayerManager.Destroy();
+		CommandManager.Destroy();
+		VehicleManager.Destroy();
+
+		BohanHounds.Destroy();
+		BrokerAssassins.Destroy();
+		DukesFamily.Destroy();
 		return true;
 	}
 
