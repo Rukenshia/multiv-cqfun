@@ -1,6 +1,6 @@
 /*
  *		MultIV CQFun
- *	@file: BrokerAssassins.nut
+ *	@file: AlgonquinAssassins.nut
  *	@author: Jan Christophersen
  *     
  *	@license: see "LICENSE" at root directory
@@ -9,15 +9,15 @@
 local __instance = null;
 
 class
-	BrokerAssassins	extends Faction
+	AlgonquinAssassins	extends Faction
 {
 	constructor ()
 	{
 		if (__instance != null)
-			throw("Recreation of BrokerAssassins");
+			throw("Recreation of AlgonquinAssassins");
 
 		__instance = this;
-		base.constructor("Broker Assassins");
+		base.constructor("Algonquin Assassins");
 		Initialize();
 	}
 

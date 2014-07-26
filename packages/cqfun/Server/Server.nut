@@ -41,8 +41,8 @@ class
 		
 		// Load Factions
 		BohanHounds();
-		BrokerAssassins();
-		DukesFamily();
+		BrokerFamily();
+		AlgonquinAssassins();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;
@@ -55,8 +55,8 @@ class
 		VehicleManager.Destroy();
 
 		BohanHounds.Destroy();
-		BrokerAssassins.Destroy();
-		DukesFamily.Destroy();
+		BrokerFamily.Destroy();
+		AlgonquinAssassins.Destroy();
 		return true;
 	}
 

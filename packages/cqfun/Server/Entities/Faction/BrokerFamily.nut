@@ -1,6 +1,6 @@
 /*
  *		MultIV CQFun
- *	@file: DukesFamily.nut
+ *	@file: BrokerFamily.nut
  *	@author: Jan Christophersen
  *     
  *	@license: see "LICENSE" at root directory
@@ -9,15 +9,15 @@
 local __instance = null;
 
 class
-	DukesFamily	extends Faction
+	BrokerFamily	extends Faction
 {
 	constructor ()
 	{
 		if (__instance != null)
-			throw("Recreation of DukesFamily");
+			throw("Recreation of BrokerFamily");
 
 		__instance = this;
-		base.constructor("Dukes Family");
+		base.constructor("Broker Family");
 		Initialize();
 	}
 

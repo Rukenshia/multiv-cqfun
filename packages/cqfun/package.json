@@ -114,11 +114,11 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Entities/Faction/BrokerAssassins.nut",
+			"filepath": "Server/Entities/Faction/BrokerFamily.nut",
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Entities/Faction/DukesFamily.nut",
+			"filepath": "Server/Entities/Faction/AlgonquinAssassins.nut",
 			"type": "server"
 		},
 		{
