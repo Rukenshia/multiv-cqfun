@@ -25,6 +25,12 @@ class
 	function Initialize () 
 	{
 		base.Initialize();
+		SetId(3);
+		AvailableVehicles.Add(VehicleData(629, "Contender", BrokerFamily, Resources(250, 200)));
+		AvailableVehicles.Add(VehicleData(654, "Landstalker", BrokerFamily, Resources(600, 400)));
+		AvailableVehicles.Add(VehicleData(672, "Patriot", BrokerFamily, Resources(500, 600)));
+		AvailableVehicles.Add(VehicleData(721, "Tropic", BrokerFamily, Resources(1000, 1000)));
+		AvailableVehicles.Add(VehicleData(660, "Maverick", BrokerFamily, Resources(3000, 3000)));
 		return true;
 	}
 

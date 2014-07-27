@@ -18,6 +18,14 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Misc/Resources.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Misc/VehicleData.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Managers/BaseManager.nut",
 			"type": "server"
 		},
@@ -31,6 +39,14 @@
 		},
 		{
 			"filepath": "Server/Managers/VehicleManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/VehicleDataManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/FactionManager.nut",
 			"type": "server"
 		},
 		{

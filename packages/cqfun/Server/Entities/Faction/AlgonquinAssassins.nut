@@ -9,7 +9,7 @@
 local __instance = null;
 
 class
-	AlgonquinAssassins	extends Faction
+	AlgonquinAssassins extends Faction
 {
 	constructor ()
 	{
@@ -25,6 +25,13 @@ class
 	function Initialize () 
 	{
 		base.Initialize();
+		SetId(1);
+		AvailableVehicles.Add(VehicleData(668, "NRG", AlgonquinAssassins, Resources(600, 400)));
+		AvailableVehicles.Add(VehicleData(673, "PCJ 600", AlgonquinAssassins, Resources(250, 200)));
+		AvailableVehicles.Add(VehicleData(715, "Sultan RS", AlgonquinAssassins, Resources(500, 500)));
+		AvailableVehicles.Add(VehicleData(605, "Banshee", AlgonquinAssassins, Resources(700, 750)));
+		AvailableVehicles.Add(VehicleData(627, "Dinghy", AlgonquinAssassins, Resources(1000, 1000)));
+		AvailableVehicles.Add(VehicleData(660, "Maverick", AlgonquinAssassins, Resources(3000, 3000)));
 		return true;
 	}
 

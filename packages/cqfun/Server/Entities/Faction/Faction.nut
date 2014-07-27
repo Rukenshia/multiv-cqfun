@@ -9,19 +9,21 @@
 class
 	Faction
 {
-	DBModel			=	null
-	Members 		=	null
-	StatModifiers	=	null
-	Vehicles		=	null
+	AvailableVehicles 	=	null
+	DBModel				=	null
+	Members 			=	null
+	StatModifiers		=	null
+	Vehicles			=	null
 
-	m_strName		=	""
+	m_strName			=	""
+	m_iId				=	0
 
 	constructor (strName)
 	{
 		m_strName = strName;
 		StatModifiers = CStatModifiers();
 		Vehicles = Collection();
-
+		FactionManager.Add(this);
 		Load();
 		Initialize();
 	}
@@ -29,6 +31,7 @@ class
 	// Essential Functions
 	function Initialize () 
 	{
+		AvailableVehicles = Collection();
 		return true;
 	}
 
@@ -39,6 +42,12 @@ class
 	}
 
 	// Getters and Setters
+	function GetId ()
+		return m_iId;
+
+	fucntion SetId (iId)
+		m_iId = iId;
+
 	function GetName ()
 		return m_strName;
 

@@ -18,6 +18,7 @@ class
 	account 		=	0
 	name 			=	""
 	spawn_data 		=	EmptyTable
+	resources		=	""
 
 	constructor ()
 	{

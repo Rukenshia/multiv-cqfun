@@ -38,11 +38,8 @@ class
 		PlayerManager();
 		CommandManager();
 		VehicleManager();
-		
-		// Load Factions
-		BohanHounds();
-		BrokerFamily();
-		AlgonquinAssassins();
+		VehicleDataManager();
+		FactionManager();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;

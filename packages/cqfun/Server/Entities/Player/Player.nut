@@ -9,10 +9,12 @@
 class
 	Player extends Player
 {
-	TimeConnected 	=	null
 	Account 		=	null
 	Character 		=	null
+	Faction			=	null
+	Resources 		=	null
 	StatModifiers	=	null
+	TimeConnected 	=	null
 
 	m_bLoggedIn		=	false
 
@@ -31,6 +33,11 @@ class
 
 		if (Character == null)
 			SendError("TODO: Char Registration Thing");
+
+		this.Faction = FactionManager.GetById(Character.faction);
+
+		local aResources = JSON.Decode(Character.resources);
+		this.Resources = ::Resources(aResources[0], aResources[1]);
 
 		Server.Debug("Player " + GetName() + " initialized.");
 		return true;
@@ -61,6 +68,12 @@ class
 	{
 		local tPos = base.GetPosition();
 		return Vector3(tPos.x, tPos.y, tPos.z);
+	}
+
+	function SetPosition (v3Position)
+	{
+		v3Position.Floatify();
+		return base.SetPosition(v3Position.x, v3Position.y, v3Position.z);
 	}
 
 	// Is-Functions

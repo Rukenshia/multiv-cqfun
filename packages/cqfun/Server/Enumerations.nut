@@ -32,7 +32,8 @@ enum Log
 enum PlayerStat
 {
 	MaxHealth = "Maximum Health",
-	Mobility = "Movement Speed"
+	Mobility = "Movement Speed",
+	Regeneration = "Health Regeneration Ratio"
 };
 
 enum ServerFlags
@@ -42,6 +43,6 @@ enum ServerFlags
 
 enum VehicleStat
 {
-	MaximumHealth = "Maximum Vehicle Health",
+	MaxHealth = "Maximum Vehicle Health",
 	Mobility = "Vehicle Movement Speed",
 };
