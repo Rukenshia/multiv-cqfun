@@ -36,6 +36,18 @@ enum PlayerStat
 	Regeneration = "Health Regeneration Ratio"
 };
 
+enum ResourceName
+{
+	Energy = "Energy",
+	Materials = "Materials"
+};
+
+enum ResourceNameShort 
+{
+	Energy = "E",
+	Materials = "M"
+};
+
 enum ServerFlags
 {
 	EnableDebugMessages

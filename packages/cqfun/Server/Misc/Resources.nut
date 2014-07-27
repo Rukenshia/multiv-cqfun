@@ -17,4 +17,7 @@ class
 		Energy = energy;
 		Material = material;
 	}
+
+	function _tostring ()
+		return Energy + "" + ResourceNameShort.Energy + ", " + Material + "" + ResourceNameShort.Materials;
 }
