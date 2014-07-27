@@ -17,6 +17,7 @@ class
 	id				=	0
 	members			=	EmptyTable
 	name 			=	""
+	spawn_data		=	EmptyTable
 	
 
 	constructor ()

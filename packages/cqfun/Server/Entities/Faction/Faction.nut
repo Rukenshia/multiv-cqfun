@@ -12,6 +12,7 @@ class
 	AvailableVehicles 	=	null
 	DBModel				=	null
 	Members 			=	null
+	SpawnData			=	null
 	StatModifiers		=	null
 	Vehicles			=	null
 
@@ -60,6 +61,8 @@ class
 		DBModel = DBFaction.Where("name", "=", GetName()).First();
 		if (DBModel == null)
 			throw("Could not load Faction " + GetName());
+
+		SpawnData = DBModel.spawn_data;
 
 		// Spawn Vehicles
 		local tVehicles = DBVehicle.Where("faction", "=", DBModel.id).Get();

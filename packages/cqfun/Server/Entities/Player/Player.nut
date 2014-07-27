@@ -56,7 +56,7 @@ class
 			Server.Warning("TODO: Dump Character");
 		else
 		{
-			Character.spawn_data = {"Position": GetPosition(), "Heading": GetCurrentHeading() };
+			Character.spawn_data = { "Position": GetPosition(), "Heading": GetCurrentHeading() };
 			Server.Debug("Spawn Data: " + Character.spawn_data);
 			Character.Save();
 		}
@@ -79,6 +79,9 @@ class
 	// Is-Functions
 	function IsLoggedIn ()
 		return m_bLoggedIn;
+
+	function IsInAnyFaction ()
+		return this.Faction != null;
 
 	// Other Functions
 	function ApplyStatModifiers (strStat)
@@ -129,7 +132,7 @@ class
 
 	function Spawn ()
 	{
-		if (Character != null)
+		/*if (Character != null)
 		{
 			local tSpawnData = Character.spawn_data;
 			if (typeof tSpawnData == "table")
@@ -140,6 +143,14 @@ class
 			}
 			else
 				Server.Error("Invalid SpawnData for Player " + GetName() + " (char " + Character.id + "): " + tSpawnData);
+		}*/
+
+		if (IsInAnyFaction())
+		{
+			local sd = Faction.SpawnData;
+			sd.Position.Floatify();
+			Debug("Spawning at " + sd.Position.tostring());
+			return base.Spawn(sd.Position.x, sd.Position.y, sd.Position.z, sd.Heading);
 		}
 		return base.Spawn(NullVector.x.tofloat(), NullVector.y.tofloat(), NullVector.z.tofloat(), 0.0);
 	}
