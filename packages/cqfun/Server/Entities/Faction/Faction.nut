@@ -46,7 +46,7 @@ class
 	function GetId ()
 		return m_iId;
 
-	fucntion SetId (iId)
+	function SetId (iId)
 		m_iId = iId;
 
 	function GetName ()

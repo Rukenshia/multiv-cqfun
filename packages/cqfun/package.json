@@ -22,10 +22,6 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Misc/VehicleData.nut",
-			"type": "server"
-		},
-		{
 			"filepath": "Server/Managers/BaseManager.nut",
 			"type": "server"
 		},
@@ -119,6 +115,10 @@
 		},
 		{
 			"filepath": "Server/Entities/Vehicle/Vehicle.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Vehicle/VehicleData.nut",
 			"type": "server"
 		},
 		{
