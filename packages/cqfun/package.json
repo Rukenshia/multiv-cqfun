@@ -98,6 +98,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Utility/Rect.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Misc/Hooks.nut",
 			"type": "server"
 		},
@@ -135,6 +139,10 @@
 		},
 		{
 			"filepath": "Server/Entities/Faction/AlgonquinAssassins.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Area/Area.nut",
 			"type": "server"
 		},
 		{
