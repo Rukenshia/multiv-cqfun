@@ -45,8 +45,6 @@ class
 			Server.Warning("Capture forcibly stopped by Area::Capture");
 			return;
 		}
-
-
 	}
 
 	function Enter (ciPlayer)
@@ -67,6 +65,12 @@ class
 
 		if (m_bGetsCaptured && Players.Count() == 0)
 			StopCapture();
+	}
+
+	function Pulse ()
+	{
+		if (m_bGetsCaptured)
+			Capture();
 	}
 
 	function StartCapture (ciFaction)

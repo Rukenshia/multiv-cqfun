@@ -41,9 +41,9 @@ class
 	// Other Functions
 	function Pulse()
 	{
-		foreach(ciPlayer in Player.All())
+		foreach(ciArea in GetItems())
 		{
-			foreach (ciArea in GetItems())
+			foreach (ciPlayer in Player.All())
 			{
 				if (ciPlayer.Distance(ciArea) <= DEFAULT_AREA_RANGE)
 				{
@@ -56,6 +56,7 @@ class
 						ciArea.Exit(ciPlayer);
 				}
 			}
+			ciArea.Pulse();
 		}
 	}
 }
