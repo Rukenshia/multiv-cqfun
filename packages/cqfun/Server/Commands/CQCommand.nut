@@ -91,6 +91,18 @@ class
 		return true;
 	}
 
+	function CreateUsageString (strCommand, ...)
+	{
+		local str = "USAGE: /" + strCommand + " ";
+		foreach (val in vargv)
+		{
+			if (val != "")
+				str += "[" + val + "] ";
+		}
+
+		return str;
+	}
+
 	function Run (notExtendedYet = true)
 	{
 

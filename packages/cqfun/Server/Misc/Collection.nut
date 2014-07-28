@@ -67,6 +67,9 @@ class
 		return true;
 	}
 
+	function Count ()
+		return m_tData.len();
+
 	function Exists (item)
 	{
 		foreach (tempItem in m_tData)

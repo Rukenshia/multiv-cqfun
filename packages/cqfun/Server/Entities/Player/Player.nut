@@ -15,6 +15,7 @@ class
 	Resources 		=	null
 	StatModifiers	=	null
 	TimeConnected 	=	null
+	Vehicles		=	null
 
 	m_bLoggedIn		=	false
 
@@ -37,7 +38,9 @@ class
 		this.Faction = FactionManager.GetById(Character.faction);
 
 		local aResources = JSON.Decode(Character.resources);
-		this.Resources = ::Resources(aResources[0], aResources[1]);
+		this.Resources = PlayerResources(aResources[0], aResources[1]);
+
+		Vehicles = Collection();
 
 		Server.Debug("Player " + GetName() + " initialized.");
 		return true;

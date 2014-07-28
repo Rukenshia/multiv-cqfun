@@ -36,6 +36,9 @@ class
 	// Getters and Setters
 	function Get (istrVehicle, cFaction = null)
 	{
+		if (cFaction instanceof Faction)
+			cFaction = cFaction.getclass();
+			
 		if (typeof istrVehicle == "integer")
 		{
 			foreach (ciVehicleData in GetItems())
