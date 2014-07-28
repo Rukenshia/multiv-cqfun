@@ -10,6 +10,7 @@ class
 	Area
 {
 	CapturedBy			=	null
+	CapturingFaction	=	null
 	Players				=	null
 	Position			=	null
 
@@ -36,15 +37,50 @@ class
 	function GetsCaptured ()
 		return m_bGetsCaptured;
 
+	function Capture ()
+	{
+		if (!m_bGetsCaptured)
+		{
+			StopCapture();
+			Server.Warning("Capture forcibly stopped by Area::Capture");
+			return;
+		}
+
+
+	}
+
 	function Enter (ciPlayer)
 	{
 		Server.Debug(ciPlayer.GetName() + " entered Area '" + m_strName + "'");
 		Players.Add(ciPlayer);
+		ciPlayer.Area = this;
+
+		if (!m_bGetsCaptured && (ciPlayer.Faction != CapturedBy || ciPlayer.Faction == null || CapturedBy == null))
+			StartCapture(ciPlayer.Faction);
 	}
 
 	function Exit (ciPlayer)
 	{
 		Server.Debug(ciPlayer.GetName() + " left Area '" + m_strName + "'");
 		Players.Remove(ciPlayer);
+		ciPlayer.Area = null;
+
+		if (m_bGetsCaptured && Players.Count() == 0)
+			StopCapture();
+	}
+
+	function StartCapture (ciFaction)
+	{
+		if (m_bGetsCaptured)
+			return Server.Warning("StartCapture triggered, but it already started");
+
+		m_bGetsCaptured	= true;
+		CapturingFaction = ciFaction;
+	}
+
+	function StopCapture ()
+	{
+		if (!m_bGetsCaptured)
+			return Server.Warning("StopCapture triggered, but it already stopped");
 	}
 }

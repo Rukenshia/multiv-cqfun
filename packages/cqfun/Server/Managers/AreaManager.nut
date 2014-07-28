@@ -48,18 +48,12 @@ class
 				if (ciPlayer.Distance(ciArea) <= DEFAULT_AREA_RANGE)
 				{
 					if (ciPlayer.Area != ciArea)
-					{
-						ciPlayer.Area = ciArea;
 						ciArea.Enter(ciPlayer);
-					}
 				}
 				else
 				{
 					if (ciPlayer.Area == ciArea)
-					{
-						ciPlayer.Area = null;
 						ciArea.Exit(ciPlayer);
-					}
 				}
 			}
 		}
