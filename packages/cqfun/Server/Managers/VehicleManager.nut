@@ -29,6 +29,8 @@ class
 		// Register Events
 		base.Initialize();
 
+		LoadPublicVehicles();
+
 		VehicleEvents.Register();
 		Server.Print("Vehicle Events registered.")
 		return true;
@@ -68,4 +70,11 @@ class
 	// Is-Functions
 
 	// Other Functions
+	function LoadPublicVehicles ()
+	{
+		local tVehicles = DBVehicle.Where("owner", "=", -1).Where("faction", "=", -1).Get();
+		foreach (ciDBVehicle in tVehicles)
+			Vehicle.CreateFromDBModel(ciDBVehicle);
+		Server.Print("Loaded " + tVehicles.len() + " public vehicles.");
+	}
 }
