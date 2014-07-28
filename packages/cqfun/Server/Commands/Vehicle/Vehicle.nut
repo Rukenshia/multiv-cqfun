@@ -1,7 +1,7 @@
 /*
  *		MultIV CQFun
  *	@file: Vehicle.nut
- *	@author: 
+ *	@author: Jan Christophersen
  *     
  *	@license: see "LICENSE" at root directory
  */

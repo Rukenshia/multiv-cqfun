@@ -34,16 +34,14 @@ class
 	}
 
 	// Getters and Setters
-	function Get (istrVehicle, cFaction = null)
+	function Get (istrVehicle, ciFaction = null)
 	{
-		if (cFaction instanceof Faction)
-			cFaction = cFaction.getclass();
 			
 		if (typeof istrVehicle == "integer")
 		{
 			foreach (ciVehicleData in GetItems())
 			{
-				if (ciVehicleData.Model == istrVehicle && (cFaction == null || cFaction == ciVehicleData.Faction))
+				if (ciVehicleData.Model == istrVehicle && (ciFaction == null || ciFaction == ciVehicleData.Faction))
 					return ciVehicleData;
 			}
 		}
@@ -51,7 +49,7 @@ class
 		{
 			foreach (ciVehicleData in GetItems())
 			{
-				if (ciVehicleData.Name == istrVehicle && (cFaction == null || cFaction == ciVehicleData.Faction))
+				if (ciVehicleData.Name == istrVehicle && (ciFaction == null || ciFaction == ciVehicleData.Faction))
 					return ciVehicleData;
 			}
 		}

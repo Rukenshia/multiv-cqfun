@@ -26,12 +26,12 @@ class
 	{
 		base.Initialize();
 		SetId(1);
-		AvailableVehicles.Add(VehicleData(668, "NRG", AlgonquinAssassins, Resources(600, 400)));
-		AvailableVehicles.Add(VehicleData(673, "PCJ 600", AlgonquinAssassins, Resources(250, 200)));
-		AvailableVehicles.Add(VehicleData(715, "Sultan RS", AlgonquinAssassins, Resources(500, 500)));
-		AvailableVehicles.Add(VehicleData(605, "Banshee", AlgonquinAssassins, Resources(700, 750)));
-		AvailableVehicles.Add(VehicleData(627, "Dinghy", AlgonquinAssassins, Resources(1000, 1000)));
-		AvailableVehicles.Add(VehicleData(660, "Maverick", AlgonquinAssassins, Resources(3000, 3000)));
+		AvailableVehicles.Add(VehicleData(668, "NRG", this, Resources(600, 400)));
+		AvailableVehicles.Add(VehicleData(673, "PCJ 600", this, Resources(250, 200)));
+		AvailableVehicles.Add(VehicleData(715, "Sultan RS", this, Resources(500, 500)));
+		AvailableVehicles.Add(VehicleData(605, "Banshee", this, Resources(700, 750)));
+		AvailableVehicles.Add(VehicleData(627, "Dinghy", this, Resources(1000, 1000)));
+		AvailableVehicles.Add(VehicleData(660, "Maverick", this, Resources(3000, 3000)));
 		return true;
 	}
 
