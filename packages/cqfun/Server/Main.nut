@@ -8,19 +8,13 @@
 
 function Main (ciPackage, strArguments)
 {
-	if (ciPackage.GetName() != Package.Current().GetName())
-		return; // We dont care.
-
 	// TODO: Debug Flags
 	Server(split(strArguments, " "));
 }
-Event.Add(Package, "start", Main);
+Event.Add(Package.Current(), "start", Main);
 
 function Shutdown (ciPackage)
 {
-	if (ciPackage.GetName() != Package.Current().GetName())
-		return; // We dont care.
-
 	Server.Print("We didnt stop, did we?")
 }
-Event.Add(Package, "stop", Shutdown);
+Event.Add(Package.Current(), "stop", Shutdown);
