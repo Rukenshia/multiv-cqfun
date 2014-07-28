@@ -40,6 +40,7 @@ class
 		VehicleManager();
 		VehicleDataManager();
 		FactionManager();
+		AreaManager();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;

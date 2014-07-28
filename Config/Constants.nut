@@ -11,3 +11,5 @@ const MODE_VERSION 				= 	"0.?"
 
 const MAX_VEHICLES_PER_PLAYER 	=	3
 const VEHICLE_REMOVE_DELAY		=	5 	// In Minutes
+
+const DEFAULT_AREA_RANGE		=	50.0

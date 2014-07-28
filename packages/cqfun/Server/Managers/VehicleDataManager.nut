@@ -30,6 +30,7 @@ class
 
 	function Destroy ()
 	{
+		base.Destroy();
 		return true;
 	}
 

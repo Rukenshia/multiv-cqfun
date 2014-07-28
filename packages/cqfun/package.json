@@ -46,6 +46,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Managers/AreaManager.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Database/Query.nut",
 			"type": "server"
 		},

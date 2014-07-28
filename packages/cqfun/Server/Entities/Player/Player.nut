@@ -10,6 +10,7 @@ class
 	Player extends Player
 {
 	Account 		=	null
+	Area			=	null
 	Character 		=	null
 	Faction			=	null
 	Resources 		=	null
@@ -83,6 +84,9 @@ class
 	function IsLoggedIn ()
 		return m_bLoggedIn;
 
+	function IsInAnyArea ()
+		return Area != null;
+
 	function IsInAnyFaction ()
 		return this.Faction != null;
 
@@ -107,6 +111,17 @@ class
 
 	function Debug (strMessage)
 		SendMessage(strMessage, Color.Debug);
+
+	function Distance (v3ciPos)
+	{
+		if (v3ciPos instanceof Player)
+			return GetPosition().Distance(v3ciPos.GetPosition());
+		else if (v3ciPos instanceof Area)
+			return GetPosition().Distance(v3ciPos.Position);
+		else if (v3ciPos instanceof Vector3)
+			return GetPosition().Distance(v3ciPos);
+		return 0.0;
+	}
 
 	function Login ()
 	{
