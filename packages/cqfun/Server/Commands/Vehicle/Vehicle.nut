@@ -42,6 +42,7 @@ class
 			ciPlayer.SendInfo("help		-	you found it already.");
 			ciPlayer.SendInfo("list		-	list available vehicles.");
 			ciPlayer.SendInfo("spawn	-	spawns a vehicle");
+			ciPlayer.SendInfo("delete	-	unspawns a vehicle");
 			ciPlayer.SendInfo("=========================================");
 			return;
 		}
@@ -55,11 +56,31 @@ class
 				vargv.insert(0, getroottable());
 				return this.Spawn.acall(vargv);
 				break;
+			case "delete":
+				if (vargv.len() < 1)
+				{
+					ciPlayer.SendInfo("================[Spawned Vehicles]================");
+					foreach (i, ciVehicle in ciPlayer.Vehicles.GetData())
+						ciPlayer.SendInfo((i + 1) + ": " + ciVehicleData.Name);
+					ciPlayer.SendInfo("==================================================");
+					return ciPlayer.SendError(CQCommand.CreateUsageString("v(ehicle) delete", "id"));
+				}
+				return this.Delete(vargv[0].tointeger());
 			default:
 				return Run(ciPlayer);
 		}
 
 
+	}
+
+	function Delete (iId)
+	{
+		local ciVehicle = ciPlayer.Vehicles.GetAt(iId - 1);
+
+		if (ciVehicle == null)
+			return Server.Warning("Invalid iId in Vehicle::Delete");
+
+		return ciPlayer.Vehicles.GetAt(iId - 1).Destroy();
 	}
 
 	function ShowList (ciPlayer)
@@ -88,7 +109,10 @@ class
 		if (!ciPlayer.Resources.Remove(ciVehicleData.Costs))
 			return ciPlayer.SendError("You dont have enough resources. Needed: " + ciVehicleData.Costs.tostring());
 		ciPlayer.Debug("Spawning Vehicle");
-		ciPlayer.Vehicles.Add(Vehicle.Create(ciVehicleData.Model, ciPlayer.GetPosition() + Vector3(1, 1, 0).Floatify(), NullVector, ciPlayer.Faction.));
+		local ciVehicle = Vehicle.Create(ciVehicleData.Model, ciPlayer.GetPosition() + Vector3(1, 1, 0).Floatify(), NullVector, ciPlayer.Faction.);
+		ciPlayer.Vehicles.Add(ciVehicle);
+		ciVehicle.Data = ciVehicleData;
+		
 		return true;
 	}
 }

@@ -8,10 +8,11 @@
 class
 	Vehicle extends Vehicle
 {
-	StatModifiers	=	null
+	Data 			=	null
 	DBModel 		=	null
 	Owner			=	null
 	SpawnData 		=	null
+	StatModifiers	=	null
 
 	m_iDatabaseId	=	-1
 	// Essential Functions
@@ -37,6 +38,10 @@ class
 			if (!IsRuntimeVehicle())
 				Server.Error("TODO: Throw some Dumps")
 		}
+
+		if (Owner instanceof Player)
+			Owner.Vehicles.Remove(this);
+			
 		return true;
 	}
 
