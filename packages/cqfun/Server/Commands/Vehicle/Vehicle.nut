@@ -12,7 +12,7 @@ class
 	constructor ()
 	{
 		base.constructor(["vehicle", "v"]);
-		SetUsage("action");
+		SetUsage("");
 		CommandManager.Register(this);
 	}
 
@@ -33,8 +33,12 @@ class
 		return true;
 	}
 
-	function Run (ciPlayer, strAction = "help", ...)
+	function Run (ciPlayer, ...)
 	{
+		local strAction = "help";
+		if (vargv.len() != 0)
+			strAction = vargv[0];
+
 		if (strAction == "help")
 		{
 			ciPlayer.SendInfo("================[Vehicle]================");
@@ -52,12 +56,13 @@ class
 			case "list":
 				return ShowList(ciPlayer);
 			case "spawn":
+				vargv.remove(0);
 				vargv.insert(0, ciPlayer);
 				vargv.insert(0, getroottable());
 				return this.Spawn.acall(vargv);
 				break;
 			case "delete":
-				if (vargv.len() < 1)
+				if (vargv.len() < 2)
 				{
 					ciPlayer.SendInfo("================[Spawned Vehicles]================");
 					foreach (i, ciVehicle in ciPlayer.Vehicles.GetData())
@@ -65,7 +70,7 @@ class
 					ciPlayer.SendInfo("==================================================");
 					return ciPlayer.SendError(CQCommand.CreateUsageString("v(ehicle) delete", "id"));
 				}
-				return this.Delete(vargv[0].tointeger());
+				return this.Delete(vargv[1].tointeger());
 			default:
 				return Run(ciPlayer);
 		}
