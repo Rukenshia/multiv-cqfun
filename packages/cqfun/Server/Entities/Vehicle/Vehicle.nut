@@ -41,7 +41,8 @@ class
 
 		if (Owner instanceof Player)
 			Owner.Vehicles.Remove(this);
-			
+
+		VehicleManager.Remove(this);
 		return true;
 	}
 

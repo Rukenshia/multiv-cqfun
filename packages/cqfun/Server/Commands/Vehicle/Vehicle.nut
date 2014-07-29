@@ -80,7 +80,7 @@ class
 		if (ciVehicle == null)
 			return Server.Warning("Invalid iId in Vehicle::Delete");
 
-		return ciPlayer.Vehicles.GetAt(iId - 1).Destroy();
+		return ciVehicle.Destroy();
 	}
 
 	function ShowList (ciPlayer)
