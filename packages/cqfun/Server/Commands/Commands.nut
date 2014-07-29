@@ -2,10 +2,11 @@
 /*
  *		MultIV CQFun
  *	@file: Commands.nut
- *	@author: Command Linker [auto generated at 24.07.2014, 10:03pm]
+ *	@author: Command Linker [auto generated at 29.07.2014, 10:16am]
  *     
  *	@license: see "LICENSE" at root directory
  */
+dofile("packages/cqfun/Server/Commands/Vehicle/Vehicle.nut");
 
 
 class 
@@ -13,6 +14,7 @@ class
 {
 	function Register ()
 	{
+		VehicleCommand();
 
 	}
 }
