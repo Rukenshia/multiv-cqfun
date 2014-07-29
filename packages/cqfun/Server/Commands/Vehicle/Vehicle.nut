@@ -114,7 +114,8 @@ class
 		if (!ciPlayer.Resources.Remove(ciVehicleData.Costs))
 			return ciPlayer.SendError("You dont have enough resources. Needed: " + ciVehicleData.Costs.tostring());
 		ciPlayer.Debug("Spawning Vehicle");
-		local ciVehicle = Vehicle.Create(ciVehicleData.Model, ciPlayer.GetPosition() + Vector3(1, 1, 0).Floatify(), NullVector, ciPlayer.Faction.);
+		// TODO: Faction Colors
+		local ciVehicle = Vehicle.Create(ciVehicleData.Model, ciPlayer.GetPosition() + Vector3(1, 1, 0).Floatify(), NullVector);
 		ciPlayer.Vehicles.Add(ciVehicle);
 		ciVehicle.Data = ciVehicleData;
 		
