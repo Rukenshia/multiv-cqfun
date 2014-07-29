@@ -9,7 +9,7 @@
 local __instance = null;
 
 class
-	VehicleDataManger extends BaseManager
+	VehicleDataManager extends BaseManager
 {
 	constructor ()
 	{
@@ -33,7 +33,7 @@ class
 		base.Destroy();
 		return true;
 	}
-	
+
 	function GetInstance ()
 		return __instance;
 
