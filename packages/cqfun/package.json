@@ -102,10 +102,6 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Utility/Rect.nut",
-			"type": "server"
-		},
-		{
 			"filepath": "Server/Misc/Hooks.nut",
 			"type": "server"
 		},
