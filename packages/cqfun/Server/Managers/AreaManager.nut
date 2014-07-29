@@ -33,6 +33,9 @@ class
 		base.Destroy;
 		return true;
 	}
+	
+	function GetInstance ()
+		return __instance;
 
 	// Getters and Setters
 
