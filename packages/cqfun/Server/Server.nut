@@ -37,8 +37,8 @@ class
 		// Start the Managers
 		PlayerManager();
 		CommandManager();
-		VehicleManager();
 		VehicleDataManager();
+		VehicleManager();
 		FactionManager();
 		AreaManager();
 
