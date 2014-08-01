@@ -118,6 +118,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Entities/Player/PlayerResources.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Entities/Vehicle/Vehicle.nut",
 			"type": "server"
 		},

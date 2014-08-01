@@ -132,7 +132,7 @@ class
 			return ciCommand.Run(ciPlayer, Utility.Implode(args, " "));
 
 		args.insert(0, ciPlayer);
-		args.insert(0, getroottable()); // needed for acall
+		args.insert(0, ciCommand); // needed for acall
 		return ciCommand.Run.acall(args);
 	}
 

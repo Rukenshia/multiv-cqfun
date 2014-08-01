@@ -19,6 +19,7 @@ class
 	name 			=	""
 	spawn_data 		=	EmptyTable
 	resources		=	""
+	faction			=	0
 
 	constructor ()
 	{

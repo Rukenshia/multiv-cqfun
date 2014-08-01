@@ -40,7 +40,6 @@ class
 	// Getters and Setters
 	function Get (istrVehicle, ciFaction = null)
 	{
-			
 		if (typeof istrVehicle == "integer")
 		{
 			foreach (ciVehicleData in GetItems())
@@ -57,7 +56,7 @@ class
 					return ciVehicleData;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	// Is-Functions

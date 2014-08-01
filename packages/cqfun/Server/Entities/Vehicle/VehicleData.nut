@@ -18,6 +18,7 @@ class
 	{
 		Model = model;
 		Name = name;
+		Faction = faction;
 		Costs = costs;
 		StatModifiers = CStatModifiers();
 		VehicleDataManager.Add(this);

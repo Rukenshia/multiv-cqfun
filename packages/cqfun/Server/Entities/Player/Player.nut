@@ -61,7 +61,7 @@ class
 		else
 		{
 			Character.spawn_data = { "Position": GetPosition(), "Heading": GetCurrentHeading() };
-			Server.Debug("Spawn Data: " + Character.spawn_data);
+			Character.resources = JSON.Encode([this.Resources.Energy, this.Resources.Material]);
 			Character.Save();
 		}
 		return true;

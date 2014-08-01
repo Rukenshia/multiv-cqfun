@@ -43,7 +43,7 @@ class
 			Owner.Vehicles.Remove(this);
 
 		VehicleManager.Remove(this);
-		return true;
+		return base.Destroy();
 	}
 
 	// Getters and Setters

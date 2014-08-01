@@ -39,6 +39,9 @@ class
 		if (ciPlayer != null)
 			return DestroyPlayer(ciPlayer);
 
+		foreach (ciPlayer in GetPlayers())
+			DestroyPlayer(ciPlayer);
+
 		return true;
 	}
 
