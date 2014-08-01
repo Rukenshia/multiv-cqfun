@@ -58,3 +58,13 @@ enum VehicleStat
 	MaxHealth = "Maximum Vehicle Health",
 	Mobility = "Vehicle Movement Speed",
 };
+
+// Defines who can enter a vehicle
+enum VehicleEntryRestriction
+{
+	Nobody,
+	Owner,
+	Squad,
+	Faction,
+	Everyone
+};

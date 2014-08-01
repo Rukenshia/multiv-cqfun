@@ -8,17 +8,17 @@
 class
 	Vehicle extends Vehicle
 {
-	Data 			=	null
-	DBModel 		=	null
-	Owner			=	null
-	SpawnData 		=	null
-	StatModifiers	=	null
+	Data 					=	null
+	DBModel 				=	null
+	Owner					=	null
+	SpawnData 				=	null
+	StatModifiers			=	null
 
-	m_iDatabaseId	=	-1
+	m_iDatabaseId			=	-1
+	m_iEntryRestriction		=	VehicleEntryRestriction.Owner
 	// Essential Functions
 	function Initialize () 
 	{
-		Server.Debug("Vehicle " + m_iDatabaseId + " initialized.");
 		StatModifiers = CStatModifiers();
 
 		VehicleManager.Add(this);
@@ -53,6 +53,12 @@ class
 	function SetDatabaseId (iId)
 		m_iDatabaseId = iId;
 
+	function GetEntryRestriction ()
+		return m_iEntryRestriction;
+
+	function SetEntryRestriction (iEntryRestriction)
+		m_iEntryRestriction = iEntryRestriction;
+
 	// Is-Functions
 	function IsRuntimeVehicle ()
 		return (GetDatabaseId() == -1);
@@ -84,5 +90,23 @@ class
 		ciVehicle.Initialize();
 
 		return ciVehicle;
+	}
+
+	function TryEnter (ciPlayer)
+	{
+		switch (m_iEntryRestriction)
+		{
+			case VehicleEntryRestriction.Nobody:
+				return false;
+			case VehicleEntryRestriction.Owner:
+				return (ciPlayer == Owner);
+			case VehicleEntryRestriction.Squad:
+				return false; // TODO
+			case VehicleEntryRestriction.Faction:
+				return (ciPlayer.Faction == this.Owner && Owner instanceof Faction);
+			case VehicleEntryRestriction.Everyone:
+				return true;
+		}
+		return false;
 	}
 }

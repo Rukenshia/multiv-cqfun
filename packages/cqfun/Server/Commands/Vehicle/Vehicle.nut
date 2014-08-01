@@ -118,6 +118,7 @@ class
 		// TODO: Faction Colors
 		local ciVehicle = Vehicle.Create(ciVehicleData.Model, ciPlayer.GetPosition() + Vector3(1, 1, 0).Floatify(), NullVector);
 		ciPlayer.Vehicles.Add(ciVehicle);
+		ciVehicle.Owner = ciPlayer;
 		ciVehicle.Data = ciVehicleData;
 		
 		return true;
