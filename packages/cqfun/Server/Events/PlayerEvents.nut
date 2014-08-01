@@ -40,6 +40,12 @@ class
 	{
 		if (!ciVehicle.TryEnter(ciPlayer))
 		{
+			if (ciPlayer.IsDeveloper())
+			{
+				ciPlayer.SendSuccess("Abusing Developer Accesslevel");
+				return true;
+			}
+			
 			ciPlayer.SendError("You are not allowed to enter this vehicle.");
 			return false;
 		}

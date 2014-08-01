@@ -6,6 +6,15 @@
  *	@license: see "LICENSE" at root directory
  */
 
+enum AccessLevel
+{
+	None,
+	User,
+	Moderator,
+	Administrator,
+	Developer
+}
+
 enum Color
 {
 	Red = 0xFF0000,

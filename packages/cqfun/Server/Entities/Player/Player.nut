@@ -19,6 +19,7 @@ class
 	Vehicles		=	null
 
 	m_bLoggedIn		=	false
+	m_iAccessLevel	=	0
 
 	// Essential Functions
 	function Initialize () 
@@ -30,6 +31,8 @@ class
 
 		if (Account == null)
 			SendError("TODO: Registration (Auto)")
+
+		m_iAccessLevel = Account.accesslevel;
 
 		Character = DBCharacter.Where("account", "=", Account.id).Where("name", "=", GetName()).First();
 
@@ -68,6 +71,12 @@ class
 	}
 
 	// Getters and Setters
+	function GetAccessLevel ()
+		return m_iAccessLevel;
+
+	function SetAccessLevel (iAccess)
+		m_iAccessLevel = iAccess;
+
 	function GetPosition ()
 	{
 		local tPos = base.GetPosition();
@@ -81,14 +90,24 @@ class
 	}
 
 	// Is-Functions
-	function IsLoggedIn ()
-		return m_bLoggedIn;
+	function IsAdmin ()
+		if (m_iAccessLevel >= AccessLevel.Administrator);
+
+	function IsDeveloper ()
+		return m_iAccessLevel == AccessLevel.Developer;
 
 	function IsInAnyArea ()
 		return Area != null;
 
 	function IsInAnyFaction ()
 		return this.Faction != null;
+
+	function IsLoggedIn ()
+		return m_bLoggedIn;
+
+	function IsModerator ()
+		return m_iAccessLevel >= AccessLevel.Moderator;
+
 
 	// Other Functions
 	function ApplyStatModifiers (strStat)

@@ -16,7 +16,7 @@ class
 	// Fields
 	id			= 0
 	steam_id	= 0
-	test		= EmptyTable
+	accesslevel	= 0
 
 	constructor ()
 	{
