@@ -267,6 +267,16 @@ function Utility::ToType (v, type)
 			if (typeof v == "string")
 				return JSON.Decode(v);
 			return v;
+		case "array":
+			if (typeof v == "string")
+				return JSON.Decode(v);
+		case "Vector3":
+			if (typeof v == "table")
+				return Vector3(v.x, v.y, v.z);
+			else if (typeof v == "string")
+				return JSON.Decode(v);
+			else if (typeof v == "Vector3")
+				return v;
 		default:
 			return v;
 	}

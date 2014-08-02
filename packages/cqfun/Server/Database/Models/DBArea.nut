@@ -1,6 +1,6 @@
 /*
  *		MultIV CQFun
- *	@file: DBCharacter.nut
+ *	@file: DBArea.nut
  *	@author: Jan Christophersen
  *     
  *	@license: see "LICENSE" at root directory
@@ -9,17 +9,15 @@
 local __instance = null;
 
 class
-	DBCharacter extends CQORM
+	DBArea extends CQORM
 {
-	m_strTable 		= 	"characters";
+	m_strTable 			=	"areas";
 
 	// Fields
-	id 				=	0
-	account 		=	0
-	name 			=	""
-	spawn_data 		=	EmptyTable
-	resources		=	[]
-	faction			=	0
+	id 					=	0
+	name 				=	""
+	position 			=	NullVector
+	resourceProduction 	=	[]
 
 	constructor ()
 	{
@@ -43,7 +41,7 @@ class
 	}
 
 	function GetName ()
-		return "DBCharacter";
+		return "DBArea";
 
 	// Getters and Setters
 	function GetInstance ()
@@ -54,4 +52,14 @@ class
 	// Other Functions
 	function Save ()
 		base.Update(this);
+
+	function Seed ()
+	{
+		DBArea.Create({
+			id = 1,
+			name = "testArea",
+			position = Vector3(1.0, 5.0, 10.0),
+			resourceProduction = [5, 5]
+		})
+	}
 }

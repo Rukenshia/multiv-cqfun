@@ -12,6 +12,7 @@ class
 	function Initialize ()
 	{
 		DBAccount();
+		DBArea();
 		DBCharacter();
 		DBFaction();
 		DBVehicle();

@@ -25,12 +25,16 @@ class
 	function Initialize () 
 	{
 		base.Initialize();
+		LoadAreas();
 		return true;
 	}
 
 	function Destroy ()
 	{
-		base.Destroy;
+		base.Destroy();
+
+		foreach (ciArea in GetInstance().GetItems())
+			ciArea.Destroy();
 		return true;
 	}
 	
@@ -42,6 +46,16 @@ class
 	// Is-Functions
 
 	// Other Functions
+	function LoadAreas ()
+	{
+		local tAreas = DBArea.All();
+		foreach (i, ciDBArea in tAreas)
+		{
+			Server.Debug("Added Area " + ciDBArea.name + " at " + ciDBArea.position);
+			Area(ciDBArea);
+		}
+	}
+
 	function Pulse()
 	{
 		foreach(ciArea in GetItems())

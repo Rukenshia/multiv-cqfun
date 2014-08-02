@@ -41,7 +41,7 @@ class
 
 		this.Faction = FactionManager.GetById(Character.faction);
 
-		local aResources = JSON.Decode(Character.resources);
+		local aResources = Character.resources;
 		this.Resources = PlayerResources(aResources[0], aResources[1]);
 
 		Vehicles = Collection();
@@ -64,7 +64,7 @@ class
 		else
 		{
 			Character.spawn_data = { "Position": GetPosition(), "Heading": GetCurrentHeading() };
-			Character.resources = JSON.Encode([this.Resources.Energy, this.Resources.Material]);
+			Character.resources = [this.Resources.Energy, this.Resources.Material];
 			Character.Save();
 		}
 		return true;

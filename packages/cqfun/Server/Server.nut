@@ -51,6 +51,9 @@ class
 		PlayerManager.Destroy();
 		CommandManager.Destroy();
 		VehicleManager.Destroy();
+		AreaManager.Destroy();
+		FactionManager.Destroy();
+		VehicleDataManager.Destroy();
 
 		BohanHounds.Destroy();
 		BrokerFamily.Destroy();

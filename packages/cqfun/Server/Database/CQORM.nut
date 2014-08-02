@@ -157,7 +157,12 @@ class
 			local val = Utility.ToType(tData[field], GetInstance().m_tTypes[field]);
 
 			strFields += field;
-			strValues += "'" + SQLite.Escape(val) + "'";
+			if (typeof val == "table" || typeof val == "array")
+				strValues += "'" + JSON.Encode(SQLite.EscapeTable(val)) + "'";
+			else if (typeof val != "string")
+				strValues += "'" + JSON.Encode(val) + "'";
+			else
+				strValues += "'" + SQLite.Escape(val) + "'";
 		}
 		strFields += ")";
 		strValues += ")";
@@ -209,7 +214,7 @@ class
 		foreach (i, val in GetInstance().m_aColumns)
 		{
 			local compVal = ciModel[val];
-			if (typeof compVal == "table")
+			if (typeof compVal == "table" || typeof compVal == "array")
 				compVal = JSON.Encode(compVal);
 
 			if (ciModel.m_tOldData.rawin(val) && ciModel.m_tOldData[val] == compVal)
@@ -218,10 +223,14 @@ class
 			if (iChangedValues != 0)
 				strQuery += ", ";
 
-			if (typeof ciModel[val] == "table")
+			if (typeof ciModel[val] == "table" || typeof ciModel[val] == "array")
 				strQuery += val + " = '" + JSON.Encode(SQLite.EscapeTable(ciModel[val])) + "'";
+			else if (typeof ciModel[val] != "string")
+				strQuery += val + " = '" + JSON.Encode(ciModel[val]) + "'";
 			else
 				strQuery += val + " = '" + SQLite.Escape(ciModel[val]) + "'";
+
+			print("Changed " + val);
 			iChangedValues++
 		}
 
@@ -247,14 +256,14 @@ class
 
 			if (!m_tOldData.rawin(val))
 			{
-				if (typeof this[val] == "table")
+				if (typeof this[val] == "table" || typeof this[val] == "array")
 					m_tOldData [val] <-	JSON.Encode(this[val]);
 				else
 					m_tOldData [val] <-	this[val];
 			}
 			else
 			{
-				if (typeof this[val] == "table")
+				if (typeof this[val] == "table" || typeof this[val] == "array")
 					m_tOldData [val] <-	JSON.Encode(this[val]);
 				else
 					m_tOldData [val] = this[val];

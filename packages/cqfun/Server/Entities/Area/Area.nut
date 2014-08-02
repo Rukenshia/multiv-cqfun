@@ -9,23 +9,44 @@
 class
 	Area
 {
-	CapturedBy			=	null
-	CapturingFaction	=	null
-	Players				=	null
-	Position			=	null
+	DBArea 					=	null
+	CapturedBy				=	null
+	CapturingFaction		=	null
+	Players					=	null
+	Position				=	null
 
-	m_bGetsCaptured		=	false
-	m_fCapturePoints	=	0
-	m_strName			=	""
+	m_bGetsCaptured			=	false
+	m_fCapturePoints		=	0
+	m_strName				=	""
+	m_ciResourceProduction	=	null
 
 	// TODO: Wait for MultIV Street names thing
-	constructor (strName, position)
+	constructor (dbArea)
 	{
+		DBArea = dbArea;
+
 		m_fCapturePoints = 0;
 		m_bGetsCaptured	= false;
-		m_strName = strName;
-		Position = position;
+		m_ciResourceProduction = Resources(DBArea.resourceProduction[0], DBArea.resourceProduction[1]);
+		m_strName = dbArea.name;
+		Position = dbArea.position;
 		Players = Collection();
+
+		AreaManager.Add(this);
+	}
+
+	function Destroy ()
+	{
+		if (DBArea == null)
+		{
+			Server.Error("TODO: Dump Area");
+			return;
+		}
+
+		DBArea.position = Position;
+		DBArea.name = m_strName;
+		DBArea.resourceProduction = [m_ciResourceProduction.Energy, m_ciResourceProduction.Material];
+		DBArea.Save();
 	}
 
 	function GetCapturePoints ()
@@ -36,6 +57,12 @@ class
 
 	function GetsCaptured ()
 		return m_bGetsCaptured;
+
+	function GetResourceProduction ()
+		return m_ciResourceProduction;
+
+	function SetResourceProduction (ciResourceProduction)
+		m_ciResourceProduction = ciResourceProduction;
 
 	function Capture ()
 	{

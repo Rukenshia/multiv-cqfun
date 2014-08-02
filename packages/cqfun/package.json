@@ -18,6 +18,26 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Utility/Date.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/LogFile.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/JSON.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/Utility.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/Vector3.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Misc/Collection.nut",
 			"type": "server"
 		},
@@ -70,6 +90,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Database/Models/DBArea.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Database/Models/DBCharacter.nut",
 			"type": "server"
 		},
@@ -83,26 +107,6 @@
 		},
 		{
 			"filepath": "Server/Database/Models.nut",
-			"type": "server"
-		},
-		{
-			"filepath": "Server/Utility/Date.nut",
-			"type": "server"
-		},
-		{
-			"filepath": "Server/Utility/LogFile.nut",
-			"type": "server"
-		},
-		{
-			"filepath": "Server/Utility/JSON.nut",
-			"type": "server"
-		},
-		{
-			"filepath": "Server/Utility/Utility.nut",
-			"type": "server"
-		},
-		{
-			"filepath": "Server/Utility/Vector3.nut",
 			"type": "server"
 		},
 		{
