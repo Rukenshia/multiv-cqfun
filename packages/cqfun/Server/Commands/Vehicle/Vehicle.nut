@@ -116,7 +116,12 @@ class
 			return ciPlayer.SendError("You dont have enough resources. Needed: " + ciVehicleData.Costs.tostring());
 		ciPlayer.Debug("Spawning Vehicle");
 		// TODO: Faction Colors
-		local ciVehicle = Vehicle.Create(ciVehicleData.Model, ciPlayer.GetPosition() + Vector3(1, 1, 0).Floatify(), NullVector);
+		local tSpawn = ciPlayer.GetNearestVehicleSpawn();
+
+		if (typeof tSpawn == "integer" && tSpawn <= 0)
+			return ciPlayer.SendError("No Vehicle Spawn in range.");
+
+		local ciVehicle = Vehicle.Create(ciVehicleData.Model, tSpawn.Position.Floatify(), tSpawn.Rotation);
 		ciPlayer.Vehicles.Add(ciVehicle);
 		ciVehicle.Owner = ciPlayer;
 		ciVehicle.Data = ciVehicleData;

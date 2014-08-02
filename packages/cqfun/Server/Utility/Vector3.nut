@@ -219,6 +219,7 @@ class
 			x = x.tofloat();
 			y = y.tofloat();
 			z = z.tofloat();
+			return this;
 		}
 		else
 		{

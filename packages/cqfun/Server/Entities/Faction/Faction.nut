@@ -15,6 +15,7 @@ class
 	SpawnData			=	null
 	StatModifiers		=	null
 	Vehicles			=	null
+	VehicleSpawns		=	null
 
 	m_strName			=	""
 	m_iId				=	0
@@ -24,6 +25,7 @@ class
 		m_strName = strName;
 		StatModifiers = CStatModifiers();
 		Vehicles = Collection();
+		VehicleSpawns = Collection();
 		FactionManager.Add(this);
 		Load();
 		Initialize();

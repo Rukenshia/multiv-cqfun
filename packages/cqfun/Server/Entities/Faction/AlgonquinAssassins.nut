@@ -32,6 +32,10 @@ class
 		AvailableVehicles.Add(VehicleData(605, "Banshee", this, Resources(700, 750)));
 		AvailableVehicles.Add(VehicleData(627, "Dinghy", this, Resources(1000, 1000)));
 		AvailableVehicles.Add(VehicleData(660, "Maverick", this, Resources(3000, 3000)));
+
+		VehicleSpawns.Add({ Position = Vector3(-1047.69, -596.077, 2.85195), Rotation = Vector3(0.0, 0.0, -11.7)});
+		VehicleSpawns.Add({ Position = Vector3(-1033.46, -596.508, 2.85195), Rotation = Vector3(0.0, 0.0, 8.1)});
+		VehicleSpawns.Add({ Position = Vector3(-1019.85, -596.73, 2.85195), Rotation = Vector3(0.0, 0.0, 6.5)});
 		return true;
 	}
 

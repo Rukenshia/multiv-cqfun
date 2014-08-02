@@ -77,6 +77,42 @@ class
 	function SetAccessLevel (iAccess)
 		m_iAccessLevel = iAccess;
 
+	function GetNearestVehicleSpawn ()
+	{
+		if (this.Faction == null)
+			return 0;
+
+		local fNearestSpawnDist = -1.0;
+		local iNearestSpawn = -1;
+		local tSpawns = Faction.VehicleSpawns.GetData();
+		foreach (i, tSpawn in tSpawns)
+		{
+			local fDistance = this.Distance(tSpawn.Position);
+
+			if (fNearestSpawnDist == -1.0 || iNearestSpawn == -1)
+			{
+				iNearestSpawn = i;
+				fNearestSpawnDist = fDistance;
+			}
+			else
+			{
+				if (fDistance < fNearestSpawnDist)
+				{
+					iNearestSpawn = i;
+					fNearestSpawnDist = fDistance;
+				}
+			}
+		}
+
+		if (fNearestSpawnDist == -1.0 || iNearestSpawn == -1)
+			return 0;
+
+		if (fNearestSpawnDist > 100.0)
+			return -1;
+
+		return tSpawns[iNearestSpawn];
+	}
+
 	function GetPosition ()
 	{
 		local tPos = base.GetPosition();
@@ -135,8 +171,6 @@ class
 	{
 		if (v3ciPos instanceof Player)
 			return GetPosition().Distance(v3ciPos.GetPosition());
-		else if (v3ciPos instanceof Area)
-			return GetPosition().Distance(v3ciPos.Position);
 		else if (v3ciPos instanceof Vector3)
 			return GetPosition().Distance(v3ciPos);
 		return 0.0;
