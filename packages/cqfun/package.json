@@ -6,6 +6,10 @@
 			"type": "server"
 		},
 		{
+			"filepath": "../../Config/Flags.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Global.nut",
 			"type": "server"
 		},

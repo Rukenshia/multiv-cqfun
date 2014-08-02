@@ -65,11 +65,12 @@ class
 	// Is-Functions
 
 	// Other Functions
-	function HasFlag (iFlag)
+	function HasFlag (strFlag)
 	{
-		// Remember to use GetInstance first
-		Print("TODO: Server.HasFlag")
-		return true; 
+		if (!Flags.rawin(strFlag))
+			return false;
+
+		return Flags[strFlag]; 
 	}
 
 	// Log Functions

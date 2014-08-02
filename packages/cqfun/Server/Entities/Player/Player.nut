@@ -91,7 +91,7 @@ class
 
 	// Is-Functions
 	function IsAdmin ()
-		if (m_iAccessLevel >= AccessLevel.Administrator);
+		return (m_iAccessLevel >= AccessLevel.Administrator);
 
 	function IsDeveloper ()
 		return m_iAccessLevel == AccessLevel.Developer;

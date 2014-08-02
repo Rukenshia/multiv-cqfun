@@ -95,7 +95,7 @@ class
 				break;
 			} 
 		}
-		if (iIndex == -1)
+		if (index == -1)
 			return true;
 
 		delete m_tData[index];

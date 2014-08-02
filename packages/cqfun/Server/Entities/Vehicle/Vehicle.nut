@@ -59,6 +59,30 @@ class
 	function SetEntryRestriction (iEntryRestriction)
 		m_iEntryRestriction = iEntryRestriction;
 
+	function GetPosition ()
+	{
+		local tPos = base.GetPosition();
+		return Vector3(tPos.x, tPos.y, tPos.z);
+	}
+
+	function SetPosition (v3Position)
+	{
+		v3Position.Floatify();
+		return base.SetPosition(v3Position.x, v3Position.y, v3Position.z);
+	}
+
+	function GetRotation ()
+	{
+		local tRot = base.GetRotation();
+		return Vector3(tRot.x, tRot.y, tRot.z);
+	}
+
+	function SetRotation (v3Rotation)
+	{
+		v3Rotation.Floatify();
+		return base.SetRotation(v3Rotation.x, v3Rotation.y, v3Rotation.z);
+	}
+
 	// Is-Functions
 	function IsRuntimeVehicle ()
 		return (GetDatabaseId() == -1);

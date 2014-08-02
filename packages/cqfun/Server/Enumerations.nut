@@ -59,7 +59,7 @@ enum ResourceNameShort
 
 enum ServerFlags
 {
-	EnableDebugMessages
+	EnableDebugMessages = "DebugMessages"
 };
 
 enum VehicleStat
