@@ -43,8 +43,9 @@ class
 	{
 		foreach (ciVehicle in GetInstance().GetItems())
 		{
-			Remove(ciVehicle);
-			ciVehicle.Destroy();
+			ciVehicle.InternalDestroy();
+			//ciVehicle.Destroy();
+			Server.Warning("TODO: ciVehicle.Destroy");
 		}
 
 		return true;
