@@ -124,12 +124,12 @@ class
 		if (args.len() == 0)
 			return ciCommand.Run(ciPlayer);
 
+		if (ciCommand instanceof CQTextCommand)
+			return ciCommand.Run(ciPlayer, Utility.Implode(args, " "));
+
 		// Resize if there are too many parameters
 		if (args.len() > tInfo.parameters.len() - 2 && (tInfo.parameters.len() > 0 && tInfo.parameters[tInfo.parameters.len() - 1] != "..."))
 			args.resize(tInfo.parameters.len() - 2);
-
-		if (ciCommand instanceof CQTextCommand)
-			return ciCommand.Run(ciPlayer, Utility.Implode(args, " "));
 
 		args.insert(0, ciPlayer);
 		args.insert(0, ciCommand); // needed for acall

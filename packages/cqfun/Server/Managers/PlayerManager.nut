@@ -65,6 +65,12 @@ class
 	// Is-Functions
 
 	// Other Functions
+	function Broadcast (strMessage, hexColor = 0xFFFFFF)
+	{
+		foreach (ciPlayer in Player.All())
+			ciPlayer.SendMessage(strMessage, hexColor);
+	}
+
 	function DestroyPlayer (ciPlayer)
 	{
 		return ciPlayer.Destroy();

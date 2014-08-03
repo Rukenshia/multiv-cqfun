@@ -203,24 +203,13 @@ class
 
 	function Spawn ()
 	{
-		/*if (Character != null)
-		{
-			local tSpawnData = Character.spawn_data;
-			if (typeof tSpawnData == "table")
-			{
-				tSpawnData.Position.Floatify();
-				Debug("Spawning at " + tSpawnData.Position.tostring());
-				return base.Spawn(tSpawnData.Position.x, tSpawnData.Position.y, tSpawnData.Position.z, tSpawnData.Heading.tofloat());
-			}
-			else
-				Server.Error("Invalid SpawnData for Player " + GetName() + " (char " + Character.id + "): " + tSpawnData);
-		}*/
-
 		if (IsInAnyFaction())
 		{
 			local sd = Faction.SpawnData;
 			sd.Position.Floatify();
 			Debug("Spawning at " + sd.Position.tostring());
+			SetSpawnPosition(sd.Position.x, sd.Position.y, sd.Position.z);
+			SetSpawnHeading(sd.Heading);
 			return base.Spawn(sd.Position.x, sd.Position.y, sd.Position.z, sd.Heading);
 		}
 		return base.Spawn(NullVector.x.tofloat(), NullVector.y.tofloat(), NullVector.z.tofloat(), 0.0);
