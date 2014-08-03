@@ -2,7 +2,11 @@
 	"language": "squirrel",
 	"scripts": [
 		{
-			"filepath": "Server/Main.nut",
+			"filepath": "../../Config/Constants.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "../../Config/Flags.nut",
 			"type": "server"
 		},
 		{
@@ -14,15 +18,15 @@
 			"type": "server"
 		},
 		{
-			"filepath": "Server/Server.nut",
-			"type": "server"
-		},
-		{
 			"filepath": "Server/Utility/Date.nut",
 			"type": "server"
 		},
 		{
 			"filepath": "Server/Utility/LogFile.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Utility/JSON.nut",
 			"type": "server"
 		},
 		{
@@ -34,7 +38,87 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Misc/Collection.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Misc/Resources.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/BaseManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/PlayerManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/CommandManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/VehicleManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/VehicleDataManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/FactionManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/AreaManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Query.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/NestedQuery.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/CQORM.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/DBAccount.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/DBArea.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/DBCharacter.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/DBVehicle.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models/DBFaction.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Database/Models.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Misc/Hooks.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Misc/StatModifier/StatModifier.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Misc/StatModifier/CStatModifiers.nut",
 			"type": "server"
 		},
 		{
@@ -42,7 +126,59 @@
 			"type": "server"
 		},
 		{
+			"filepath": "Server/Entities/Player/PlayerResources.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Vehicle/Vehicle.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Vehicle/VehicleData.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/Faction.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/BohanHounds.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/BrokerFamily.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Faction/AlgonquinAssassins.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Area/Area.nut",
+			"type": "server"
+		},
+		{
 			"filepath": "Server/Events/PlayerEvents.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Events/VehicleEvents.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Commands/CQCommand.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Commands/Commands.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Server.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Main.nut",
 			"type": "server"
 		}
 	],

@@ -5,7 +5,7 @@
  *     
  *	@license: see "LICENSE" at root directory
  */
-
+ 
 function Main (ciPackage, strArguments)
 {
 	// TODO: Debug Flags
@@ -15,6 +15,6 @@ Event.Add(Package.Current(), "start", Main);
 
 function Shutdown (ciPackage)
 {
-	Server.Print("We didnt stop, did we?")
+	Server.Destroy();
 }
 Event.Add(Package.Current(), "stop", Shutdown);

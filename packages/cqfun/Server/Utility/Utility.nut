@@ -1,11 +1,10 @@
 /*
- *		LIBERTY CITY ROLEPLAY
- *    @file: Utility.nut
- *    @initial author: Jan Christophersen
+ *		MultIV CQFun
+ *	@file: Utility.nut
+ *	@author: Jan Christophersen
  *     
- *    @initial date: 21.02.2014
+ *	@license: see "LICENSE" at root directory
  */
-
 
 // Raw Class for Utility
 class
@@ -47,29 +46,6 @@ function Utility::CalculateGrayFromDistance (hexBaseColor, hexEndColor, fDistanc
 
 	local iColor = (((1 - (fDistance - fDistanceOffset) / fMaxDistance)) * iColorRange).tointeger() + hexEndColor;
 	return compilestring("return " + format("0x%x%x%x", iColor, iColor, iColor))();
-}
-
-/*
- *	Function:
- *		Utility::CreateHash
- *
- *	Description:
- *		creates the hash for LCRP passwords
- *
- *	Parameter:
- *		<string>	strRegistrationTime		-	time when user registered
- *		<string>	strToHash				-	string to hash
- *
- *	Returns:
- *		string
- */
-function Utility::CreateHash (strRegistrationTime, strInput)
-{
-	local strTemp = md5(strRegistrationTime + "" + strInput); 
-	for (local i = 0; i < 5; i++)
-		strTemp = md5(strTemp);
-
-	return strTemp;
 }
 
 /*
@@ -288,7 +264,19 @@ function Utility::ToType (v, type)
 
 				return temp;
 			}
+			if (typeof v == "string")
+				return JSON.Decode(v);
 			return v;
+		case "array":
+			if (typeof v == "string")
+				return JSON.Decode(v);
+		case "Vector3":
+			if (typeof v == "table")
+				return Vector3(v.x, v.y, v.z);
+			else if (typeof v == "string")
+				return JSON.Decode(v);
+			else if (typeof v == "Vector3")
+				return v;
 		default:
 			return v;
 	}

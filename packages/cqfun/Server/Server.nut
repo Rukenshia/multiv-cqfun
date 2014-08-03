@@ -27,19 +27,37 @@ class
 	// Essential Functions
 	function Initialize () 
 	{
+		// Initialize Database Models
+		Models.Initialize();
+		Success("Database Models initialized.")
+		
 		// Load Config
 		// Load Whatever
 
-		// Register Events
-		PlayerEvents.Register();
-		Success("Events registered.")
+		// Start the Managers
+		PlayerManager();
+		CommandManager();
+		VehicleDataManager();
+		VehicleManager();
+		FactionManager();
+		AreaManager();
 
-		Success("Server Initialized.")
+		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;
 	}
 
 	function Destroy ()
 	{
+		PlayerManager.Destroy();
+		CommandManager.Destroy();
+		VehicleManager.Destroy();
+		AreaManager.Destroy();
+		FactionManager.Destroy();
+		VehicleDataManager.Destroy();
+
+		BohanHounds.Destroy();
+		BrokerFamily.Destroy();
+		AlgonquinAssassins.Destroy();
 		return true;
 	}
 
@@ -50,11 +68,12 @@ class
 	// Is-Functions
 
 	// Other Functions
-	function HasFlag (iFlag)
+	function HasFlag (strFlag)
 	{
-		// Remember to use GetInstance first
-		Print("TODO: Server.HasFlag")
-		return true; 
+		if (!Flags.rawin(strFlag))
+			return false;
+
+		return Flags[strFlag]; 
 	}
 
 	// Log Functions
@@ -88,4 +107,7 @@ class
 
 	function Success (strMessage)
 		return Print(strMessage, Log.Success)
+
+	function Warning (strMessage)
+		return Print(strMessage, Log.Warning);
 }

@@ -1,9 +1,9 @@
 /*
- *		LIBERTY CITY ROLEPLAY
- *    @file: LogFile.nut
- *    @initial author: Jan Christophersen
+ *		MultIV CQFun
+ *	@file: LogFile.nut
+ *	@author: Jan Christophersen
  *     
- *    @initial date: 01.03.2014
+ *	@license: see "LICENSE" at root directory
  */
 
 class file extends file

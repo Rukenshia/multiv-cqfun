@@ -1,9 +1,9 @@
 /*
- *		LIBERTY CITY ROLEPLAY
- *    @file: Vector3.nut
- *    @initial author: Jan Christophersen
+ *		MultIV CQFun
+ *	@file: Vector3.nut
+ *	@author: Jan Christophersen
  *     
- *    @initial date: 02.05.2014
+ *	@license: see "LICENSE" at root directory
  */
 
 class
@@ -212,6 +212,23 @@ class
 		return cv1.x * cv2.x + cv1.y * cv2.y + cv1.z * cv2.z;
 	}
 
+	function Floatify (vec = null)
+	{
+		if (vec == null)
+		{
+			x = x.tofloat();
+			y = y.tofloat();
+			z = z.tofloat();
+			return this;
+		}
+		else
+		{
+			vec.x = vec.x.tofloat();
+			vec.y = vec.y.tofloat();
+			vec.z = vec.z.tofloat();
+			return vec;
+		}
+	}
 
 }
 
