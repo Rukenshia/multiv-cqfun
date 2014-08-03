@@ -32,6 +32,10 @@ class
 		AvailableVehicles.Add(VehicleData(621, "Comet", this, Resources(250, 200)));
 		AvailableVehicles.Add(VehicleData(653, "Jetmax", this, Resources(1000, 1000)));
 		AvailableVehicles.Add(VehicleData(660, "Maverick", this, Resources(3000, 3000)));
+
+		VehicleSpawns.Add({ Position = Vector3(303.592, 1877.41, 22.0371), Rotation = Vector3(0.0, 0.0, -82.7)});
+		VehicleSpawns.Add({ Position = Vector3(332.177, 1872.1, 17.7586), Rotation = Vector3(0.0, 0.0, -180.0)});
+		VehicleSpawns.Add({ Position = Vector3(350.318, 1885.81, 17.7777), Rotation = Vector3(0.0, 0.0, 90.0)});
 		return true;
 	}
 
