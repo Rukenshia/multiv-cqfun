@@ -151,8 +151,6 @@ class
 		strValues += ")";
 
 		strQuery += strFields + " VALUES " + strValues;
-
-		Server.Debug("Query: " + SQLite.Prepare(strQuery).Execute(GetInstance()).len());
 	}
 
 	function First ()
@@ -213,7 +211,6 @@ class
 			else
 				strQuery += val + " = '" + SQLite.Escape(ciModel[val]) + "'";
 
-			print("Changed " + val);
 			iChangedValues++
 		}
 
@@ -226,8 +223,6 @@ class
 		strQuery += " WHERE id = '" + this.m_tOldData.id + "'";
 
 		UpdateOldData();
-
-		Server.Debug(SQLite.Prepare(strQuery).Execute(GetInstance()).len() + " row(s) affected when updating " + GetName());
 	}
 
 	function UpdateOldData()
@@ -256,7 +251,7 @@ class
 
 	function Reload ()
 	{
-		local tResult = SQLite.Prepare("SELECT * FROM " + m_strTable + " WHERE id = '" + m_tOldData.id + "'").Execute(GetInstance());
+		local tResult = Query(m_strTable).Custom("SELECT * FROM " + m_strTable + " WHERE id = '" + m_tOldData.id + "'").Execute(GetInstance());
 
 		if (tResult.len() != 1)
 		{

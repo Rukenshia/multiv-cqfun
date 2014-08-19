@@ -119,7 +119,8 @@ class
 
 	function Execute (ciModel = null)
 	{
-		Server.Debug("Executing >>" + m_strQuery + "<<");
+		if (Server.HasFlag(ServerFlag.PrintQueries))
+			Server.Debug("Executing >>" + m_strQuery + "<<");
 		local handle = MySQL.GetHandle();
 		//local tRetn = SQLite.Prepare(m_strQuery).Execute();
 		mysql.query(handle, m_strQuery);
