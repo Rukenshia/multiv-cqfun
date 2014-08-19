@@ -8,6 +8,25 @@ This is an Example of getting all Accounts:
 Account.All();
 ```
 
+Let's look at an example of how it would be solved with just the stock mysql module:
+```C
+// Assuming handle is an active mysql handle
+mysql.query(handle, "SELECT * FROM accounts;");
+mysql.fetch_result(handle);
+
+local tAccounts = {};
+while (mysql.fetch_row(handle))
+{
+	local idx = tAccounts.len();
+	tAccounts[idx] <- {};
+	tAccounts[idx].id <- mysql.fetch_field_row (handle, 0);
+	// Manually load everything into the table, CQORM does it automatically
+}
+mysql.free_result(handle);
+```
+This example shows how much of a code reduction it is to use CQORM.
+
+Back to Account.All.
 It returns a Table of 'Account' class instances. You can then modify them like this:
 ```C
 foreach (ciAccount in Account.All())
