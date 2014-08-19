@@ -16,5 +16,6 @@ Event.Add(Package.Current(), "start", Main);
 function Shutdown (ciPackage)
 {
 	Server.Destroy();
+	Server.Print(MODE_NAME + " stopped.");
 }
 Event.Add(Package.Current(), "stop", Shutdown);

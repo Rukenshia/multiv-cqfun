@@ -57,9 +57,10 @@ enum ResourceNameShort
 	Materials = "M"
 };
 
-enum ServerFlags
+enum ServerFlag
 {
-	EnableDebugMessages = "DebugMessages"
+	EnableDebugMessages = "DebugMessages",
+	PrintQueries		= "PrintQueries",
 };
 
 enum VehicleStat

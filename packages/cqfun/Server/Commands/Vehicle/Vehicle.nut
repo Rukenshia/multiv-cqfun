@@ -85,6 +85,7 @@ class
 			return Server.Warning("Invalid iId in Vehicle::Delete");
 
 		ciPlayer.SendSuccess(ciVehicle.Data.Name + " deleted.");
+		ciVehicle.InternalDestroy();
 		return ciVehicle.Destroy();
 	}
 

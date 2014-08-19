@@ -25,7 +25,7 @@ class
 		return true;
 	}
 
-	function Destroy ()
+	function InternalDestroy()
 	{
 		// Save some db data
 		if (DBModel != null)
@@ -43,7 +43,6 @@ class
 			Owner.Vehicles.Remove(this);
 
 		VehicleManager.Remove(this);
-		return base.Destroy();
 	}
 
 	// Getters and Setters

@@ -117,14 +117,41 @@ class
 		return this;
 	}
 
-	function Execute ()
+	function Execute (ciModel = null)
 	{
-		local tRetn = SQLite.Prepare(m_strQuery).Execute();
+		if (Server.HasFlag(ServerFlag.PrintQueries))
+			Server.Debug("Executing >>" + m_strQuery + "<<");
+		local handle = MySQL.GetHandle();
+		//local tRetn = SQLite.Prepare(m_strQuery).Execute();
+		mysql.query(handle, m_strQuery);
+		mysql.store_result(handle);
+
+		local tResult = {};
+		// Get Result
+
+		while(mysql.fetch_row(handle))
+		{
+			local tidx = tResult.len();
+			tResult [tidx] <- {};
+			local idx = 0;
+			local res = mysql.fetch_field_row(handle, idx);
+			while (res != 0)
+			{
+				tResult [tidx][idx] <- res;
+				idx++;
+
+				if (ciModel == null || (ciModel != null && idx < ciModel.m_aColumns.len()))
+					res = mysql.fetch_field_row(handle, idx);
+				else
+					res = 0;
+			}
+		}
+		mysql.free_result(handle);
 
 		m_strQueryType = "";
 		m_strQuery = "";
 		m_bWhereStarted = false;
 
-		return tRetn;
+		return tResult;
 	}
 }

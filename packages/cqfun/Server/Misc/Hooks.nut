@@ -13,7 +13,7 @@ function print(strMessage, iType = Log.Info)
 {
 	if (iType == Log.Debug)
 	{
-		if (!Server.HasFlag(ServerFlags.EnableDebugMessages))
+		if (!Server.HasFlag(ServerFlag.EnableDebugMessages))
 			return;
 	}
 

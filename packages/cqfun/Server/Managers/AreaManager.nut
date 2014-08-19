@@ -50,10 +50,7 @@ class
 	{
 		local tAreas = DBArea.All();
 		foreach (i, ciDBArea in tAreas)
-		{
-			Server.Debug("Added Area " + ciDBArea.name + " at " + ciDBArea.position);
 			Area(ciDBArea);
-		}
 	}
 
 	function Pulse()
