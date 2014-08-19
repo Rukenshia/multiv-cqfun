@@ -24,7 +24,6 @@ class
 		m_tTypes = {};
 
 		// Validity Check of table
-		// TODO: Change when MySQL
 		local tQueryResult = Query(strTable).Custom("SHOW COLUMNS FROM " + strTable + ";").Execute();
 		m_aColumns = [];
 		if (tQueryResult != null)
