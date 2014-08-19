@@ -25,33 +25,16 @@ class
 
 		// Validity Check of table
 		// TODO: Change when MySQL
-		local tQueryResult = Query(strTable).Custom("SELECT sql FROM sqlite_master WHERE type='table' and name ='" + strTable + "'").Execute();
-		if (tQueryResult.len() == 0)
-			throw("Model [" + GetName() + "]: Invalid Table specified? Could not get columns.");
-		else
+		local tQueryResult = Query(strTable).Custom("SHOW COLUMNS FROM " + strTable + ";").Execute();
+		m_aColumns = [];
+		if (tQueryResult != null)
 		{
-			if (!tQueryResult[0].rawin("sql"))
-				throw("Invalid tQueryResult for Model [" + GetName() + "]");
-
-			local a = split (tQueryResult[0].sql, "\n");
-
-			m_aColumns = [];
-			foreach (i, val in a)
+			foreach (i, val in tQueryResult)
 			{
-				if (i == 0)
-					continue;
+				if (!val.rawin(0))
+					throw("MySQL fault");
 
-				local startPos = val.find("\"");
-
-				if (startPos == null)
-					continue;
-
-				local endPos = val.find("\"", startPos + 1);
-
-				if (endPos == null)
-					continue;
-
-				local column = val.slice(startPos + 1, endPos);
+				local column = val[0];
 
 				try {
 					this[column];
@@ -61,7 +44,6 @@ class
 					if (e.find("the index") != null)
 						throw("Model [" + GetName() + "]: Could not find variable '" + column + "'");
 				}
-
 				m_aColumns.push(column);
 			}
 		}
@@ -94,12 +76,13 @@ class
 		if (GetInstance().m_ciQuery == null)
 			throw("No Active Query");
 
-		local tResult = GetInstance().m_ciQuery.Execute();
+		local tResult = GetInstance().m_ciQuery.Execute(GetInstance());
 
 		local tData = {};
 
 		foreach (i, val in tResult)
 		{
+			Server.Print(i + ": " + val);
 			tData [tData.len()] <- this();
 			local tmp = tData [tData.len() - 1];
 			foreach (i2, field in GetInstance().m_aColumns)
@@ -169,7 +152,7 @@ class
 
 		strQuery += strFields + " VALUES " + strValues;
 
-		Server.Debug("Query: " + SQLite.Prepare(strQuery).Execute().len());
+		Server.Debug("Query: " + SQLite.Prepare(strQuery).Execute(GetInstance()).len());
 	}
 
 	function First ()
@@ -179,7 +162,7 @@ class
 
 		GetInstance().m_ciQuery.Custom("LIMIT 1");
 
-		local tResult = GetInstance().m_ciQuery.Execute();
+		local tResult = GetInstance().m_ciQuery.Execute(GetInstance());
 		
 		if (tResult.len() == 0)
 			return null;
@@ -187,7 +170,7 @@ class
 		local ciModel = this();
 		foreach (i, field in GetInstance().m_aColumns)
 		{
-			ciModel[field] = Utility.ToType(tResult [0][field], GetInstance().m_tTypes [field]);
+			ciModel[field] = Utility.ToType(tResult [0][i], GetInstance().m_tTypes [field]);
 		}
 		ciModel.UpdateOldData();
 
@@ -244,7 +227,7 @@ class
 
 		UpdateOldData();
 
-		Server.Debug(SQLite.Prepare(strQuery).Execute().len() + " row(s) affected when updating " + GetName());
+		Server.Debug(SQLite.Prepare(strQuery).Execute(GetInstance()).len() + " row(s) affected when updating " + GetName());
 	}
 
 	function UpdateOldData()
@@ -273,7 +256,7 @@ class
 
 	function Reload ()
 	{
-		local tResult = SQLite.Prepare("SELECT * FROM " + m_strTable + " WHERE id = '" + m_tOldData.id + "'").Execute();
+		local tResult = SQLite.Prepare("SELECT * FROM " + m_strTable + " WHERE id = '" + m_tOldData.id + "'").Execute(GetInstance());
 
 		if (tResult.len() != 1)
 		{

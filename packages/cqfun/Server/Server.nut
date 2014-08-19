@@ -27,11 +27,16 @@ class
 	// Essential Functions
 	function Initialize () 
 	{
+		// Establish MySQL Connection
+		MySQL();
+		MySQL.Connect();
+		
 		// Initialize Database Models
 		Models.Initialize();
 		Success("Database Models initialized.")
 		
 		// Load Config
+
 		// Load Whatever
 
 		// Start the Managers
