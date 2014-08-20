@@ -7,7 +7,7 @@
  */
 
 // Just use true and false (wow, who might have expected that!)
-Flags <- {
+Config.Flags <- {
 	DebugMessages = true,
 	PrintQueries = false, // Shows mysql queries in console
 };

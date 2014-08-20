@@ -46,6 +46,10 @@ class
 		VehicleManager();
 		FactionManager();
 		AreaManager();
+		WeaponManager();
+
+		// Swap Faction in Weapon config
+		_WeaponConfigSwapFactions();
 
 		Success(MODE_NAME + " " + MODE_VERSION + " Initialized.")
 		return true;
@@ -75,10 +79,10 @@ class
 	// Other Functions
 	function HasFlag (strFlag)
 	{
-		if (!Flags.rawin(strFlag))
+		if (!Config.Flags.rawin(strFlag))
 			return false;
 
-		return Flags[strFlag]; 
+		return Config.Flags[strFlag]; 
 	}
 
 	// Log Functions

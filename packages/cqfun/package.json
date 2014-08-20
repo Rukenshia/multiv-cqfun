@@ -2,11 +2,7 @@
 	"language": "squirrel",
 	"scripts": [
 		{
-			"filepath": "../../Config/Constants.nut",
-			"type": "server"
-		},
-		{
-			"filepath": "../../Config/Flags.nut",
+			"filepath": "../../Config/Config.nut",
 			"type": "server"
 		},
 		{
@@ -71,6 +67,10 @@
 		},
 		{
 			"filepath": "Server/Managers/AreaManager.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Managers/WeaponManager.nut",
 			"type": "server"
 		},
 		{
@@ -159,6 +159,10 @@
 		},
 		{
 			"filepath": "Server/Entities/Area/Area.nut",
+			"type": "server"
+		},
+		{
+			"filepath": "Server/Entities/Weapon/Weapon.nut",
 			"type": "server"
 		},
 		{
