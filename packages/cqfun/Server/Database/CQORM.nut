@@ -30,10 +30,10 @@ class
 		{
 			foreach (i, val in tQueryResult)
 			{
-				if (!val.rawin(0))
-					throw("MySQL fault");
+				if (!val.rawin("Field"))
+					throw("No Field?!");
 
-				local column = val[0];
+				local column = val["Field"];
 
 				try {
 					this[column];
@@ -81,7 +81,6 @@ class
 
 		foreach (i, val in tResult)
 		{
-			Server.Print(i + ": " + val);
 			tData [tData.len()] <- this();
 			local tmp = tData [tData.len() - 1];
 			foreach (i2, field in GetInstance().m_aColumns)
@@ -167,7 +166,7 @@ class
 		local ciModel = this();
 		foreach (i, field in GetInstance().m_aColumns)
 		{
-			ciModel[field] = Utility.ToType(tResult [0][i], GetInstance().m_tTypes [field]);
+			ciModel[field] = Utility.ToType(tResult [0][field], GetInstance().m_tTypes [field]);
 		}
 		ciModel.UpdateOldData();
 

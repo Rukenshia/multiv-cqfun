@@ -19,6 +19,30 @@ class
 
 /*
  *	Function:
+ *		Utility::ArrayHasIndex
+ *
+ *	Description:
+ *		Checks whether the array 'a' has the index 'i'
+ *
+ *	Parameter:
+ *		<array>		a 	-	array to check
+ *		<int>		i 	-	index to check
+ *
+ *	Returns:
+ *		bool
+ */
+function Utility::ArrayHasIndex (a, i)
+{
+	try {
+		a[i];
+		return true;
+	}
+	catch(e)
+		return false;
+}
+
+/*
+ *	Function:
  *		Utility::CalculateGrayFromDistance
  *
  *	Description:

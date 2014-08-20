@@ -132,6 +132,30 @@ class
 		mysql.store_result(handle);
 
 		local tResult = {};
+		local res = mysql.fetch_row_assoc(handle);
+		while (res)
+		{
+			tResult [tResult.len()] <- res;
+			res = mysql.fetch_row_assoc(handle);
+		}
+		mysql.free_result(handle);
+
+		m_strQueryType = "";
+		m_strQuery = "";
+		m_bWhereStarted = false;
+
+		return tResult;
+	}
+
+	function ExecuteInternalAssoc (ciModel = null)
+	{
+		if (Server.HasFlag(ServerFlag.PrintQueries))
+			Server.Debug("Executing >>" + m_strQuery + "<<");
+		local handle = MySQL.GetHandle();
+		mysql.query(handle, m_strQuery);
+		mysql.store_result(handle);
+
+		local tResult = {};
 		// Get Result
 
 		while(mysql.fetch_row(handle))
