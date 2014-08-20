@@ -39,6 +39,7 @@ class
 	m_strTable 			=	""
 	m_strQuery			=	""
 	m_strQueryType		=	""
+	m_iRowsAffected		=	0
 
 	constructor (strTable)
 	{
@@ -61,6 +62,11 @@ class
 		return "Query";
 
 	// Getters and Setters
+	function GetRowsAffected ()
+	{
+		Server.Warning("TODO: Rows Affected in Query");
+		return m_iRowsAffected;
+	}
 
 	// Is-Functions
 
@@ -122,7 +128,6 @@ class
 		if (Server.HasFlag(ServerFlag.PrintQueries))
 			Server.Debug("Executing >>" + m_strQuery + "<<");
 		local handle = MySQL.GetHandle();
-		//local tRetn = SQLite.Prepare(m_strQuery).Execute();
 		mysql.query(handle, m_strQuery);
 		mysql.store_result(handle);
 
@@ -153,5 +158,13 @@ class
 		m_bWhereStarted = false;
 
 		return tResult;
+	}
+
+	function RawExecute ()
+	{
+		if (Server.HasFlag(ServerFlag.PrintQueries))
+			Server.Debug("Executing >>" + m_strQuery + "<<");
+		local handle = MySQL.GetHandle();
+		mysql.query(handle, m_strQuery);
 	}
 }

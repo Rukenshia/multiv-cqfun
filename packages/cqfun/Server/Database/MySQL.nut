@@ -50,6 +50,9 @@ class
 		GetInstance().m_ciHandle = mysql.connect("localhost", "root", "", "multiv");
 
 		Server.Debug("MySQL Handle: " + GetInstance().m_ciHandle);
+		if (GetInstance().m_ciHandle == 0)
+			throw("Could not connect to MySQL database.");
+
 		Server.Debug("mysql.ping: " + mysql.ping(GetInstance().m_ciHandle));
 	}
 }

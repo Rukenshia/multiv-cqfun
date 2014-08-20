@@ -222,6 +222,10 @@ class
 		strQuery += " WHERE id = '" + this.m_tOldData.id + "'";
 
 		UpdateOldData();
+
+		local ciQuery = Query(m_strTable).Custom(strQuery);
+		ciQuery.RawExecute();
+		Server.Debug(ciQuery.GetRowsAffected() + " rows affected in " + GetName() + "::Update");
 	}
 
 	function UpdateOldData()
