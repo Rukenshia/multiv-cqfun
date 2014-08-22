@@ -36,10 +36,12 @@ class
 	m_strFile		=	""
 	m_ciHandle		=	null
 	m_bPrefix		=	true
+	m_strDateFormat	=	""
 	
-	constructor (strFile, bEraseContent = false, bPrefix = true)
+	constructor (strFile, bEraseContent = false, bPrefix = true, strDateFormat = "Y-m-d H:i:s")
 	{
 		local strMode = "a+";
+		m_strDateFormat = strDateFormat;
 
 		if (bEraseContent)
 			strMode = "w+";
@@ -69,8 +71,8 @@ class
 		return m_ciHandle.readf();
 	}
 
-	function SingleWrite (strFile, strMessage, bEraseContent = false, bPrefix = true)
-		LogFile(strFile, bEraseContent, bPrefix).Write(strMessage).Close();
+	function SingleWrite (strFile, strMessage, bEraseContent = false, bPrefix = true, strDateFormat = "Y-m-d H:i:s")
+		LogFile(strFile, bEraseContent, bPrefix, strDateFormat).Write(strMessage).Close();
 	
 	function Write(strMessage)
 	{
@@ -78,7 +80,7 @@ class
 			throw ("Could not write to " + m_strFile + ", invalid handle");
 
 		if (m_bPrefix)
-			m_ciHandle.write("[" + Date().Format("Y-m-d H:i:s") + "] " + strMessage + "\n");
+			m_ciHandle.write("[" + Date().Format(m_strDateFormat) + "] " + strMessage + "\n");
 		else
 			m_ciHandle.write(strMessage + "\n");
 		return this;

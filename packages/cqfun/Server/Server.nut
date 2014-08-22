@@ -109,7 +109,7 @@ class
 		}
 
 		if (strFile != "")
-			LogFile.SingleWrite("Logs/" + strFile + "_" + Date.Now().Format("Y-m-d") + ".log", strMessage);
+			LogFile.SingleWrite("Logs/" + strFile + "_" + Date.Now().Format("Y-m-d") + ".log", strMessage, false, true, "H:i:s");
 
 		print(strMessage, iType)
 	}
