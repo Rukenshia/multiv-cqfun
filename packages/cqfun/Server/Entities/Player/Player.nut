@@ -30,14 +30,27 @@ class
 		StatModifiers = CStatModifiers();
 
 		if (Account == null)
-			SendError("TODO: Registration (Auto)")
+			Server.Warning("TODO: Registration (Auto)")
 
 		m_iAccessLevel = Account.accesslevel;
 
 		Character = DBCharacter.Where("account", "=", Account.id).Where("name", "=", GetName()).First();
 
 		if (Character == null)
-			SendError("TODO: Char Registration Thing");
+		{
+			Server.Warning("TODO: Char Registration Thing");
+			Server.Print("Creating Character for " + GetName() + ".");
+
+			Character = DBCharacter.Create({
+				account = 1,
+				name = GetName(),
+				spawn_data = EmptyTable,
+				resources = [5000, 5000],
+				faction = 1
+			});
+
+			Server.Debug("Character Name: " + Character.name);
+		}
 
 		this.Faction = FactionManager.GetById(Character.faction);
 

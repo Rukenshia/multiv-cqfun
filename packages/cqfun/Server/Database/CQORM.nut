@@ -75,26 +75,7 @@ class
 		if (GetInstance().m_ciQuery == null)
 			throw("No Active Query");
 
-		local tResult = GetInstance().m_ciQuery.Execute(GetInstance());
-
-		local tData = {};
-
-		foreach (i, val in tResult)
-		{
-			tData [tData.len()] <- this();
-			local tmp = tData [tData.len() - 1];
-			foreach (i2, field in GetInstance().m_aColumns)
-			{
-				try {
-					tmp[field] = Utility.ToType(val [field], GetInstance().m_tTypes [field]);
-				}
-				catch (e)
-					Server.Debug("Invalid field " + field + " in " + GetName());
-			}
-			tmp.UpdateOldData();
-		}
-
-		return tData;
+		return _ResultToModelTable(GetInstance().m_ciQuery.Execute(GetInstance()));
 	}
 
 	// Is-Functions
@@ -149,6 +130,13 @@ class
 		strValues += ")";
 
 		strQuery += strFields + " VALUES " + strValues;
+
+		Query(m_strTable).Custom(strQuery).Execute();
+		local tResult = Query(m_strTable).Custom("SELECT * FROM " + m_strTable + " ORDER BY id DESC LIMIT 1").Execute();
+
+		assert(tResult.len() > 0);
+
+		return _ResultToModel(tResult[0]);
 	}
 
 	function First ()
@@ -162,15 +150,7 @@ class
 		
 		if (tResult.len() == 0)
 			return null;
-
-		local ciModel = this();
-		foreach (i, field in GetInstance().m_aColumns)
-		{
-			ciModel[field] = Utility.ToType(tResult [0][field], GetInstance().m_tTypes [field]);
-		}
-		ciModel.UpdateOldData();
-
-		return ciModel;
+		return _ResultToModel(tResult[0]);
 	}
 
 	function OrWhere (strci, strComparator = "=", strValue = 1)
@@ -282,5 +262,29 @@ class
 		GetInstance().m_ciQuery.AddWhere(strci, strComparator, strValue);
 
 		return this;
+	}
+
+	function _ResultToModel (tRawModel)
+	{
+		local ciModel = this();
+		foreach (i2, field in GetInstance().m_aColumns)
+		{
+			try {
+				ciModel[field] = Utility.ToType(tRawModel [field], GetInstance().m_tTypes [field]);
+			}
+			catch (e)
+				Server.Debug("Invalid field " + field + " in " + GetName());
+		}
+		ciModel.UpdateOldData();
+		return ciModel;
+	}
+
+	function _ResultToModelTable (tResult)
+	{
+		local tData = {};
+		foreach (i, val in tResult)
+			tData [tData.len()] <- _ResultToModel(val);
+
+		return tData;
 	}
 }
