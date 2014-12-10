@@ -37,6 +37,16 @@ class
 			catch (e)
 				continue;
 		}
+
+		m_tData = null;
+	}
+
+	function Clear (bDestroy = true)
+	{
+		if (bDestroy)
+			Destroy();
+
+		m_tData = {};
 	}
 
 	function GetAt (index)
@@ -69,6 +79,29 @@ class
 
 	function Count ()
 		return m_tData.len();
+
+	function Each(hdlFunc, defRetn = false)
+	{
+		foreach (index, value in m_tData)
+		{
+			local retn = null;
+			// Not really pretty tho
+			try {
+				retn = hdlFunc(value);
+			}
+			catch (e)
+			{
+				if (e.find("wrong number of parameters") != null)
+					retn = hdlFunc(index, value);
+				else
+					throw(e);
+			}
+
+			if (retn != null)
+				return retn;
+		}
+		return defRetn;
+	}
 
 	function Exists (item)
 	{

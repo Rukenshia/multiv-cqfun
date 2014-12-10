@@ -2,14 +2,14 @@
  *		MultIV CQFun
  *	@file: Server.nut
  *	@author: Jan Christophersen
- *     
+ *
  *	@license: see "LICENSE" at root directory
  */
 
 local __instance = null;
 
 class
-	Server	
+	Server
 {
 	m_aStartArgs	=	null
 	constructor (aArgs)
@@ -25,16 +25,21 @@ class
 	}
 
 	// Essential Functions
-	function Initialize () 
+	function Initialize ()
 	{
+		// Set Error Handler
+		// seterrorhandler(Server.ErrorHandler);
+
 		// Establish MySQL Connection
-		MySQL();
-		MySQL.Connect();
-		
+		MySQL().Connect();
+
+		if (!MySQL.GetHandle())
+			throw("Server.Initialize failed");
+
 		// Initialize Database Models
 		Models.Initialize();
 		Success("Database Models initialized.")
-		
+
 		// Load Config
 
 		// Load Whatever
@@ -77,12 +82,26 @@ class
 	// Is-Functions
 
 	// Other Functions
+	function ErrorHandler (p1)
+	{
+		// Let's do some callstack
+		local tCallstack = {};
+
+		local i = 2;
+		local stack;
+		while (stack = getstackinfos(i))
+		{
+			print(stack.func);
+			i++;
+		}
+	}
+
 	function HasFlag (strFlag)
 	{
 		if (!Config.Flags.rawin(strFlag))
 			return false;
 
-		return Config.Flags[strFlag]; 
+		return Config.Flags[strFlag];
 	}
 
 	// Log Functions

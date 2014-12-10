@@ -67,13 +67,17 @@ class
 		SpawnData = DBModel.spawn_data;
 
 		// Spawn Vehicles
-		local tVehicles = DBVehicle.Where("faction", "=", DBModel.id).Get();
-		foreach (ciDBVehicle in tVehicles)
+		if (Config.Vehicle.PermanentVehicles)
 		{
-			local ciVehicle = Vehicle.CreateFromDBModel(ciDBVehicle);
-			ciVehicle.Owner = this;
-			Vehicles.Add(ciVehicle);
-			Server.Debug("Spawned Vehicle " + ciVehicle.DBModel.id);
+			local tVehicles = DBVehicle.Where("faction", "=", DBModel.id).Get();
+			foreach (ciDBVehicle in tVehicles)
+			{
+				local ciVehicle = Vehicle.CreateFromDBModel(ciDBVehicle);
+				ciVehicle.Owner = this;
+				ciVehicle.SetEntryRestriction(VehicleEntryRestriction.Faction);
+				Vehicles.Add(ciVehicle);
+				Server.Debug("Spawned Vehicle " + ciVehicle.DBModel.id);
+			}
 		}
 
 		Server.Print(GetName() + " loaded.");

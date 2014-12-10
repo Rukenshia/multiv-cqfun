@@ -59,6 +59,9 @@ class
 
 		Vehicles = Collection();
 
+		if (Config.Vehicle.PermanentVehicles || Config.Vehicle.PersistentVehicles)
+			this.LoadVehicles();
+
 		Server.Debug("Player " + GetName() + " initialized.");
 		return true;
 	}
@@ -80,6 +83,8 @@ class
 			Character.resources = [this.Resources.Energy, this.Resources.Material];
 			Character.Save();
 		}
+
+		DestroyVehicles();
 		return true;
 	}
 
@@ -180,6 +185,16 @@ class
 	function Debug (strMessage)
 		SendMessage(strMessage, Color.Debug);
 
+	function DestroyVehicles ()
+	{
+		Vehicles.Each(function (ciVehicle) {
+			if (Config.Vehicle.PersistentVehicles)
+				ciVehicle.Owner = null;
+			else
+				ciVehicle.Destroy();
+		});
+	}
+
 	function Distance (v3ciPos)
 	{
 		if (v3ciPos instanceof Player)
@@ -187,6 +202,29 @@ class
 		else if (v3ciPos instanceof Vector3)
 			return GetPosition().Distance(v3ciPos);
 		return 0.0;
+	}
+
+	function LoadVehicles ()
+	{
+		local tDBVehicles = DBVehicle.Where("owner", "=", this.Character.id).Get();
+		foreach (dbVehicle in tDBVehicles)
+		{
+			local ciVehicle;
+			if (!VehicleManager.IsSpawned(dbVehicle.id))
+			{
+				Server.Debug("Adding Player Vehicle");
+				ciVehicle = Vehicle.CreateFromDBModel(dbVehicle);
+			}
+			else
+			{
+				ciVehicle = VehicleManager.GetByDatabaseId(dbVehicle.id);
+				Server.Debug("Not reloading v" + dbVehicle.id);
+			}
+
+			ciVehicle.Owner = this;
+			this.Vehicles.Add(ciVehicle);
+		}
+		Server.Debug("Loaded " + tDBVehicles.len() + " player vehicles.");
 	}
 
 	function Login ()

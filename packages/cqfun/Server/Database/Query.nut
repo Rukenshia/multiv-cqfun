@@ -135,6 +135,7 @@ class
 		local res = mysql.fetch_row_assoc(handle);
 		while (res)
 		{
+			Server.Debug(res);
 			tResult [tResult.len()] <- res;
 			res = mysql.fetch_row_assoc(handle);
 		}

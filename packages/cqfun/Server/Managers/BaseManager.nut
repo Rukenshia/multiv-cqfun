@@ -10,16 +10,16 @@ class
 	BaseManager
 {
 	m_cItemClass	=	null
-	m_tItems		=	null
+	m_colItems		=	null
 
-	constructor (cItemClass, tItems = null)
+	constructor (cItemClass, tData = null)
 	{
-		if (tItems != null)
-			m_tItems = tItems;
-		else
-			m_tItems = {};
-
 		m_cItemClass = cItemClass;
+
+		if (tData != null)
+			m_colItems = Collection(tData);
+		else
+			m_colItems = Collection();
 	}
 
 	// Essential Functions
@@ -35,7 +35,7 @@ class
 
 	// Getters and Setters
 	function GetItems ()
-		return GetInstance().m_tItems;
+		return GetInstance().m_colItems.GetData();
 
 	// Is-Functions
 
@@ -51,18 +51,23 @@ class
 		if (HasItem(ciItem))
 			return true;
 
-		GetInstance().m_tItems[ciItem] <- ciItem;
+		GetInstance().m_colItems.Add(ciItem);
 		return true;
 	}
 
 	function HasItem (ciItem)
-		return GetInstance().m_tItems.rawin(ciItem);
+		return GetInstance().m_colItems.Exists(ciItem);
 
 	function Remove (ciItem)
 	{
 		if (!HasItem(ciItem))
 			return true;
 
-		delete GetInstance().m_tItems[ciItem];
+		return GetInstance().m_colItems.Remove(ciItem);
+	}
+
+	function Each(hdlFunc)
+	{
+		return GetInstance().m_colItems.Each(hdlFunc);
 	}
 }

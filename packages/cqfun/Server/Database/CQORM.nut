@@ -30,6 +30,7 @@ class
 		{
 			foreach (i, val in tQueryResult)
 			{
+				Server.Debug(val + "  " + typeof(val))
 				if (!val.rawin("Field"))
 					throw("No Field?!");
 

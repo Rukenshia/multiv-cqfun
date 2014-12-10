@@ -2,7 +2,7 @@
  *		MultIV CQFun
  *	@file: Utility.nut
  *	@author: Jan Christophersen
- *     
+ *
  *	@license: see "LICENSE" at root directory
  */
 
@@ -53,7 +53,7 @@ function Utility::ArrayHasIndex (a, i)
  *		<int>	hexEndColor		-	end color [ONLY 2 NUMBERS (e.g. 0xFF and not 0xFFFFFF)]
  *		<float>	fDistance 		-	distance
  *		<float>	fMaxDistance	-	maximum distance (=endColor)
- *		
+ *
  *		(optional)
  *		<float>	fDistanceOffset	-	offset before starting to fade
  *
@@ -157,7 +157,7 @@ function Utility::Implode (v, strDelimiter = " ")
 {
    if (typeof v != "array" && typeof v != "table")
       return "";
-   
+
     local strTemp = "";
     foreach (i, val in v)
     {
@@ -168,7 +168,7 @@ function Utility::Implode (v, strDelimiter = " ")
 
 /*
  *	Function:
- *		Utility::IsArray 
+ *		Utility::IsArray
  *
  *	Description:
  *		Checks if given value is am array
@@ -217,13 +217,13 @@ function Utility::IsNumeric(v)
 {
 	if (typeof v != "string")
 		return false;
-		
+
 	return regexp("\\d{1,}(.\\d){0,1}\\d*").match(v);
 }
 
 /*
  *	Function:
- *		Utility::IsString 
+ *		Utility::IsString
  *
  *	Description:
  *		Checks if given value is a string
@@ -240,7 +240,7 @@ function Utility::IsString(v)
 
 /*
  *	Function:
- *		Utility::IsTable 
+ *		Utility::IsTable
  *
  *	Description:
  *		Checks if given value is a table

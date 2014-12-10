@@ -29,7 +29,7 @@ class
 		// Register Events
 		base.Initialize();
 
-		LoadPublicVehicles();
+		LoadVehicles();
 
 		VehicleEvents.Register();
 		Server.Print("Vehicle Events registered.")
@@ -52,12 +52,12 @@ class
 	}
 
 	// Getters and Setters
-	function GetPlayers ()
-		return Vehicle.All();
+	function GetVehicles ()
+		return GetInstance().GetItems();
 
 	function GetByDatabaseId (iId)
 	{
-		foreach (ciVehicle in GetPlayers())
+		foreach (ciVehicle in GetVehicles())
 		{
 			if (ciVehicle.DBModel != null)
 			{
@@ -69,13 +69,39 @@ class
 	}
 
 	// Is-Functions
+	function IsSpawned (iDBVehicle)
+	{
+		return this.Each(function (ciVehicle) {
+			Server.Debug(iDBVehicle + " vs " + ciVehicle.DBModel.id + " means " + (ciVehicle.DBModel.id == iDBVehicle));
+			if (ciVehicle.DBModel.id == iDBVehicle)
+				return true;
+		});
+	}
 
 	// Other Functions
-	function LoadPublicVehicles ()
+	function LoadVehicles ()
 	{
-		local tVehicles = DBVehicle.Where("owner", "=", -1).Where("faction", "=", -1).Get();
+		local tVehicles;
+
+		if (Config.Vehicle.PersistentVehicles)
+			tVehicles = DBVehicle.All();
+		else
+			tVehicles = DBVehicle.Where("owner", "=", -1).Where("faction", "=", -1).Get();
+
 		foreach (ciDBVehicle in tVehicles)
-			Vehicle.CreateFromDBModel(ciDBVehicle);
+		{
+			local ciVehicle = Vehicle.CreateFromDBModel(ciDBVehicle);
+			if (Config.Vehicle.PersistentVehicles)
+			{
+				if (ciVehicle.DBModel.owner != -1)
+					ciVehicle.Owner = PlayerManager.GetByDatabaseId(ciVehicle.DBModel.owner);
+				if (ciVehicle.DBModel.faction != -1)
+				{
+					ciVehicle.SetEntryRestriction(VehicleEntryRestriction.Faction);
+					ciVehicle.Owner = FactionManager.GetById(ciVehicle.DBModel.faction);
+				}
+			}
+		}
 		Server.Print("Loaded " + tVehicles.len() + " public vehicles.");
 	}
 }
